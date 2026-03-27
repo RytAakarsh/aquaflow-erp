@@ -1,13 +1,14 @@
 import { useAuth } from "@/contexts/AuthContext";
 import { NavLink } from "react-router-dom";
-import { Fish, LayoutDashboard, Upload, Bell, LogOut, ClipboardList } from "lucide-react";
+import { Fish, LayoutDashboard, Upload, Bell, LogOut, ClipboardList, Bot } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV = [
   { to: "/farmer", icon: LayoutDashboard, label: "Dashboard", end: true },
-  { to: "/farmer/daily-update", icon: Upload, label: "Daily Update" },
+  { to: "/farmer/daily-update", icon: Upload, label: "Update" },
   { to: "/farmer/tasks", icon: ClipboardList, label: "Tasks" },
-  { to: "/farmer/notifications", icon: Bell, label: "Notifications" },
+  { to: "/farmer/chat", icon: Bot, label: "AquaBot" },
+  { to: "/farmer/notifications", icon: Bell, label: "Alerts" },
 ];
 
 const FarmerLayout = ({ children }: { children: React.ReactNode }) => {

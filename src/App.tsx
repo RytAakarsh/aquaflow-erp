@@ -14,6 +14,7 @@ import FarmerDashboard from "./pages/farmer/FarmerDashboard";
 import DailyUpdate from "./pages/farmer/DailyUpdate";
 import Tasks from "./pages/farmer/Tasks";
 import Notifications from "./pages/farmer/Notifications";
+import AquaChat from "./pages/farmer/AquaChat";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
