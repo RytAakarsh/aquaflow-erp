@@ -14,6 +14,7 @@ import FarmerDashboard from "./pages/farmer/FarmerDashboard";
 import DailyUpdate from "./pages/farmer/DailyUpdate";
 import Tasks from "./pages/farmer/Tasks";
 import Notifications from "./pages/farmer/Notifications";
+import AquaChat from "./pages/farmer/AquaChat";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const AppRoutes = () => {
           <Route path="/farmer" element={<FarmerDashboard />} />
           <Route path="/farmer/daily-update" element={<DailyUpdate />} />
           <Route path="/farmer/tasks" element={<Tasks />} />
+          <Route path="/farmer/chat" element={<AquaChat />} />
           <Route path="/farmer/notifications" element={<Notifications />} />
           <Route path="*" element={<Navigate to="/farmer" replace />} />
         </Routes>
