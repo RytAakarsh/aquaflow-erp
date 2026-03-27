@@ -31,6 +31,7 @@ const AppRoutes = () => {
           <Route path="/farmer" element={<FarmerDashboard />} />
           <Route path="/farmer/daily-update" element={<DailyUpdate />} />
           <Route path="/farmer/tasks" element={<Tasks />} />
+          <Route path="/farmer/chat" element={<AquaChat />} />
           <Route path="/farmer/notifications" element={<Notifications />} />
           <Route path="*" element={<Navigate to="/farmer" replace />} />
         </Routes>
