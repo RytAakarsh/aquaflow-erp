@@ -252,7 +252,7 @@ const nurseryBatches = [
   { id: "NB-2402", source: "Incubatório T-03", count: 14200, avgWeight: "1,2g", stage_en: "Fry", stage_pt: "Alevino", growthRate: "+15%", pond: "N-A2", daysInNursery: 28 },
   { id: "NB-2403", source: "Incubatório T-05", count: 8800, avgWeight: "0,5g", stage_en: "Early Fry", stage_pt: "Alevino Inicial", growthRate: "+8%", pond: "N-B1", daysInNursery: 14 },
   { id: "NB-2404", source: "Incubatório T-02", count: 7600, avgWeight: "2,1g", stage_en: "Late Fry", stage_pt: "Alevino Tardio", growthRate: "+18%", pond: "N-B2", daysInNursery: 42 },
-  { id: "NB-2405", source: language => language === "pt" ? "Lote Parceiro" : "Partner Batch", count: 5000, avgWeight: "1,8g", stage_en: "Fry", stage_pt: "Alevino", growthRate: "+10%", pond: "N-C1", daysInNursery: 35 },
+  { id: "NB-2405", source: "Lote Parceiro", count: 5000, avgWeight: "1,8g", stage_en: "Fry", stage_pt: "Alevino", growthRate: "+10%", pond: "N-C1", daysInNursery: 35 },
 ];
 
 const nurseryGrowth = [
