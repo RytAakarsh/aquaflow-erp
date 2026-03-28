@@ -1,10 +1,10 @@
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import {
-  Fish, Droplets, Thermometer, Activity, CheckCircle2, TrendingUp,
-  Calendar, CloudSun, AlertTriangle, ArrowUpRight, Clock
+  Fish, Droplets, Thermometer, Activity, CheckCircle2, CloudSun
 } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, CartesianGrid } from "recharts";
 
@@ -16,46 +16,51 @@ const pondHealth = [
   { pond: "C1", temp: 28.2, ph: 7.3, do2: 6.9, stock: 750, status: "Good" },
 ];
 
-const weeklyFeed = [
-  { day: "Mon", feed: 45 }, { day: "Tue", feed: 48 }, { day: "Wed", feed: 42 },
-  { day: "Thu", feed: 50 }, { day: "Fri", feed: 47 }, { day: "Sat", feed: 52 }, { day: "Sun", feed: 44 },
+const weeklyFeedData = [
+  { day: "Seg", feed: 45 }, { day: "Ter", feed: 48 }, { day: "Qua", feed: 42 },
+  { day: "Qui", feed: 50 }, { day: "Sex", feed: 47 }, { day: "Sáb", feed: 52 }, { day: "Dom", feed: 44 },
 ];
 
 const growthData = [
-  { week: "W1", weight: 120 }, { week: "W2", weight: 155 }, { week: "W3", weight: 195 },
-  { week: "W4", weight: 240 }, { week: "W5", weight: 290 }, { week: "W6", weight: 345 },
-  { week: "W7", weight: 405 }, { week: "W8", weight: 470 },
+  { week: "S1", weight: 120 }, { week: "S2", weight: 155 }, { week: "S3", weight: 195 },
+  { week: "S4", weight: 240 }, { week: "S5", weight: 290 }, { week: "S6", weight: 345 },
+  { week: "S7", weight: 405 }, { week: "S8", weight: 470 },
 ];
 
 const FarmerDashboard = () => {
   const { user } = useAuth();
+  const { t, language } = useLanguage();
+
+  const statusMap: Record<string, string> = {
+    Good: t("good"),
+    Warning: t("warning"),
+    Excellent: t("excellent"),
+  };
 
   return (
     <div className="space-y-6 sm:pt-14">
-      {/* Greeting + Weather */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
         <div>
-          <h1 className="text-xl font-bold text-foreground font-heading">Hello, {user?.name} 👋</h1>
-          <p className="text-muted-foreground text-sm mt-1">Here's your farm overview for today</p>
+          <h1 className="text-xl font-bold text-foreground font-heading">{t("hello")}, {user?.name} 👋</h1>
+          <p className="text-muted-foreground text-sm mt-1">{t("farmOverviewToday")}</p>
         </div>
         <Card className="shadow-card border-border/50 w-fit">
           <CardContent className="p-3 flex items-center gap-3">
             <CloudSun className="w-8 h-8 text-warning" />
             <div>
-              <p className="text-sm font-bold text-foreground">32°C Sunny</p>
-              <p className="text-xs text-muted-foreground">Andhra Pradesh</p>
+              <p className="text-sm font-bold text-foreground">32°C {t("sunny")}</p>
+              <p className="text-xs text-muted-foreground">São Paulo</p>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: "Active Ponds", value: "5", icon: Droplets, color: "text-primary", sub: "All healthy" },
-          { label: "Current Stock", value: "3,200", icon: Fish, color: "text-accent", sub: "+120 this week" },
-          { label: "Avg Water Temp", value: "28.9°C", icon: Thermometer, color: "text-warning", sub: "Within range" },
-          { label: "FCR", value: "1.6", icon: Activity, color: "text-success", sub: "Target: 1.5" },
+          { label: t("activePonds"), value: "5", icon: Droplets, color: "text-primary", sub: t("allHealthy") },
+          { label: t("currentStock"), value: "3.200", icon: Fish, color: "text-accent", sub: `+120 ${t("thisWeek")}` },
+          { label: t("avgWaterTemp"), value: "28,9°C", icon: Thermometer, color: "text-warning", sub: t("withinRange") },
+          { label: "TCA", value: "1,6", icon: Activity, color: "text-success", sub: `${t("target")}: 1,5` },
         ].map((s) => (
           <Card key={s.label} className="shadow-card border-border/50">
             <CardContent className="p-4">
@@ -68,10 +73,9 @@ const FarmerDashboard = () => {
         ))}
       </div>
 
-      {/* Charts Row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Card className="shadow-card border-border/50">
-          <CardHeader className="pb-2"><CardTitle className="text-base font-heading">Fish Growth (g)</CardTitle></CardHeader>
+          <CardHeader className="pb-2"><CardTitle className="text-base font-heading">{t("fishGrowth")}</CardTitle></CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={200}>
               <AreaChart data={growthData}>
@@ -86,10 +90,10 @@ const FarmerDashboard = () => {
         </Card>
 
         <Card className="shadow-card border-border/50">
-          <CardHeader className="pb-2"><CardTitle className="text-base font-heading">Weekly Feed (kg)</CardTitle></CardHeader>
+          <CardHeader className="pb-2"><CardTitle className="text-base font-heading">{t("weeklyFeed")}</CardTitle></CardHeader>
           <CardContent>
             <ResponsiveContainer width="100%" height={200}>
-              <BarChart data={weeklyFeed}>
+              <BarChart data={weeklyFeedData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(210,18%,90%)" />
                 <XAxis dataKey="day" fontSize={11} />
                 <YAxis fontSize={11} />
@@ -101,9 +105,8 @@ const FarmerDashboard = () => {
         </Card>
       </div>
 
-      {/* Pond Health */}
       <Card className="shadow-card border-border/50">
-        <CardHeader className="pb-2"><CardTitle className="text-base font-heading">🐟 Pond Health Monitor</CardTitle></CardHeader>
+        <CardHeader className="pb-2"><CardTitle className="text-base font-heading">{t("pondHealthMonitor")}</CardTitle></CardHeader>
         <CardContent>
           <div className="space-y-2">
             {pondHealth.map((p) => (
@@ -113,51 +116,50 @@ const FarmerDashboard = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-xs font-bold text-foreground">{p.pond}</div>
                   <div>
-                    <p className="text-sm font-medium text-foreground">{p.stock} fish</p>
+                    <p className="text-sm font-medium text-foreground">{p.stock} {t("fish")}</p>
                     <p className="text-xs text-muted-foreground">{p.temp}°C · pH {p.ph} · DO {p.do2}</p>
                   </div>
                 </div>
-                <Badge variant={p.status === "Warning" ? "destructive" : p.status === "Excellent" ? "default" : "secondary"} className="text-xs">{p.status}</Badge>
+                <Badge variant={p.status === "Warning" ? "destructive" : p.status === "Excellent" ? "default" : "secondary"} className="text-xs">{statusMap[p.status]}</Badge>
               </div>
             ))}
           </div>
         </CardContent>
       </Card>
 
-      {/* Tasks + Notifications side by side */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <Card className="shadow-card border-border/50">
           <CardHeader className="pb-2">
             <div className="flex items-center justify-between">
-              <CardTitle className="text-base font-heading">Today's Tasks</CardTitle>
-              <Badge variant="secondary" className="text-xs">3/5 done</Badge>
+              <CardTitle className="text-base font-heading">{t("todaysTasks")}</CardTitle>
+              <Badge variant="secondary" className="text-xs">3/5 {language === "pt" ? "feitas" : "done"}</Badge>
             </div>
           </CardHeader>
           <CardContent className="space-y-2">
             {[
-              { task: "Morning feeding - All ponds", done: true },
-              { task: "Water quality check", done: true },
-              { task: "Upload daily photos", done: true },
-              { task: "Evening feeding - All ponds", done: false },
-              { task: "Record mortality count", done: false },
-            ].map((t, i) => (
-              <div key={i} className={`flex items-center gap-3 p-2.5 rounded-lg ${t.done ? "bg-success/10" : "bg-muted"}`}>
-                <CheckCircle2 className={`w-4 h-4 shrink-0 ${t.done ? "text-success" : "text-muted-foreground"}`} />
-                <span className={`text-sm ${t.done ? "line-through text-muted-foreground" : "text-foreground"}`}>{t.task}</span>
+              { task: t("morningFeedingTask"), done: true },
+              { task: t("waterQualityCheck"), done: true },
+              { task: t("uploadDailyPhotosTask"), done: true },
+              { task: t("eveningFeedingTask"), done: false },
+              { task: t("recordMortalityTask"), done: false },
+            ].map((tsk, i) => (
+              <div key={i} className={`flex items-center gap-3 p-2.5 rounded-lg ${tsk.done ? "bg-success/10" : "bg-muted"}`}>
+                <CheckCircle2 className={`w-4 h-4 shrink-0 ${tsk.done ? "text-success" : "text-muted-foreground"}`} />
+                <span className={`text-sm ${tsk.done ? "line-through text-muted-foreground" : "text-foreground"}`}>{tsk.task}</span>
               </div>
             ))}
           </CardContent>
         </Card>
 
         <Card className="shadow-card border-border/50">
-          <CardHeader className="pb-2"><CardTitle className="text-base font-heading">Recent Updates</CardTitle></CardHeader>
+          <CardHeader className="pb-2"><CardTitle className="text-base font-heading">{t("recentUpdates")}</CardTitle></CardHeader>
           <CardContent className="space-y-2">
             {[
-              { msg: "New feed delivery arriving tomorrow — 500kg", type: "info", time: "2h ago" },
-              { msg: "⚠ Water temp above threshold in Pond B2", type: "warning", time: "3h ago" },
-              { msg: "Weekly report reviewed by admin ✓", type: "success", time: "1d ago" },
-              { msg: "Harvest scheduled for Pond B2 — Friday", type: "info", time: "2d ago" },
-              { msg: "Payment ₹85,000 processed successfully", type: "success", time: "3d ago" },
+              { msg: t("newFeedDelivery"), type: "info", time: "2h" },
+              { msg: t("waterTempAboveThreshold"), type: "warning", time: "3h" },
+              { msg: t("weeklyReportReviewed"), type: "success", time: "1d" },
+              { msg: t("harvestScheduledPondB2"), type: "info", time: "2d" },
+              { msg: t("paymentProcessedAmount"), type: "success", time: "3d" },
             ].map((n, i) => (
               <div key={i} className={`p-2.5 rounded-lg text-sm ${
                 n.type === "warning" ? "bg-warning/10" : n.type === "success" ? "bg-success/10" : "bg-info/10"
@@ -170,16 +172,15 @@ const FarmerDashboard = () => {
         </Card>
       </div>
 
-      {/* Quick Performance */}
       <Card className="shadow-card border-border/50">
-        <CardHeader className="pb-2"><CardTitle className="text-base font-heading">📊 Your Performance</CardTitle></CardHeader>
+        <CardHeader className="pb-2"><CardTitle className="text-base font-heading">{t("yourPerformance")}</CardTitle></CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { label: "Performance Score", value: 88, max: 100, color: "[&>div]:bg-primary" },
-              { label: "Feed Efficiency", value: 85, max: 100, color: "[&>div]:bg-accent" },
-              { label: "Task Completion", value: 92, max: 100, color: "[&>div]:bg-success" },
-              { label: "Report Accuracy", value: 78, max: 100, color: "[&>div]:bg-warning" },
+              { label: t("performanceScore"), value: 88, color: "[&>div]:bg-primary" },
+              { label: t("feedEfficiency"), value: 85, color: "[&>div]:bg-accent" },
+              { label: t("taskCompletion"), value: 92, color: "[&>div]:bg-success" },
+              { label: t("reportAccuracy"), value: 78, color: "[&>div]:bg-warning" },
             ].map((m) => (
               <div key={m.label} className="text-center">
                 <p className="text-2xl font-bold text-foreground">{m.value}%</p>
