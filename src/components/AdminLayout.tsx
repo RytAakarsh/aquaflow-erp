@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   Fish, LayoutDashboard, Egg, Bug, Waves, Users, Factory, Package,
@@ -7,33 +8,33 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const NAV_ITEMS = [
-  { to: "/admin", icon: LayoutDashboard, label: "Dashboard", end: true },
-  { to: "/admin/breeding", icon: Egg, label: "Breeding" },
-  { to: "/admin/hatchery", icon: Bug, label: "Hatchery" },
-  { to: "/admin/nursery", icon: Waves, label: "Nursery" },
-  { to: "/admin/farmers", icon: Users, label: "Farmers" },
-  { to: "/admin/processing", icon: Factory, label: "Processing" },
-  { to: "/admin/inventory", icon: Package, label: "Inventory" },
-  { to: "/admin/finance", icon: DollarSign, label: "Finance" },
-  { to: "/admin/analytics", icon: BarChart3, label: "Analytics" },
-  { to: "/admin/alerts", icon: Bell, label: "Alerts" },
-];
+import LanguageToggle from "@/components/LanguageToggle";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   const { user, logout } = useAuth();
+  const { t } = useLanguage();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
 
+  const NAV_ITEMS = [
+    { to: "/admin", icon: LayoutDashboard, label: t("dashboard"), end: true },
+    { to: "/admin/breeding", icon: Egg, label: t("breeding") },
+    { to: "/admin/hatchery", icon: Bug, label: t("hatchery") },
+    { to: "/admin/nursery", icon: Waves, label: t("nursery") },
+    { to: "/admin/farmers", icon: Users, label: t("farmers") },
+    { to: "/admin/processing", icon: Factory, label: t("processing") },
+    { to: "/admin/inventory", icon: Package, label: t("inventory") },
+    { to: "/admin/finance", icon: DollarSign, label: t("finance") },
+    { to: "/admin/analytics", icon: BarChart3, label: t("analytics") },
+    { to: "/admin/alerts", icon: Bell, label: t("alerts") },
+  ];
+
   return (
     <div className="flex h-screen overflow-hidden bg-background">
-      {/* Overlay */}
       {sidebarOpen && (
         <div className="fixed inset-0 bg-foreground/20 z-40 lg:hidden" onClick={() => setSidebarOpen(false)} />
       )}
 
-      {/* Sidebar */}
       <aside className={cn(
         "fixed lg:static inset-y-0 left-0 z-50 w-64 gradient-sidebar flex flex-col transition-transform duration-300",
         sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
@@ -74,12 +75,11 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
             className="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-sm text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent/50 transition-colors"
           >
             <LogOut className="w-4.5 h-4.5" />
-            Sign Out
+            {t("signOut")}
           </button>
         </div>
       </aside>
 
-      {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         <header className="h-16 border-b border-border bg-card flex items-center justify-between px-4 sm:px-6 shrink-0">
           <div className="flex items-center gap-3">
@@ -90,11 +90,12 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
               <span className="hidden sm:inline">AquaFlow</span>
               <ChevronRight className="w-4 h-4 mx-1 hidden sm:inline" />
               <span className="font-medium text-foreground capitalize">
-                {location.pathname.split("/").pop() || "Dashboard"}
+                {location.pathname.split("/").pop() || t("dashboard")}
               </span>
             </div>
           </div>
           <div className="flex items-center gap-3">
+            <LanguageToggle />
             <Bell className="w-5 h-5 text-muted-foreground cursor-pointer hover:text-foreground transition-colors" />
             <div className="w-8 h-8 rounded-full gradient-primary flex items-center justify-center text-primary-foreground text-sm font-bold">
               {user?.name?.charAt(0) || "A"}

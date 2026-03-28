@@ -1,30 +1,33 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Bell, Package, AlertTriangle, CheckCircle2, DollarSign, Calendar, Thermometer, Fish } from "lucide-react";
-
-const notifications = [
-  { icon: AlertTriangle, title: "Water Temperature Alert", msg: "Pond B2 temperature reached 31.2°C — above safe threshold. Reduce feeding and check aerator.", time: "3 hours ago", type: "warning", read: false },
-  { icon: Package, title: "Feed Delivery Scheduled", msg: "500kg floating pellets arriving tomorrow at 9 AM. Please ensure storage area is ready.", time: "5 hours ago", type: "info", read: false },
-  { icon: DollarSign, title: "Payment Processed", msg: "₹85,000 has been credited to your account for March production.", time: "1 day ago", type: "success", read: false },
-  { icon: CheckCircle2, title: "Report Reviewed", msg: "Your weekly report for Week 12 has been reviewed and approved by admin.", time: "1 day ago", type: "success", read: true },
-  { icon: Calendar, title: "Harvest Scheduled", msg: "Pond B2 harvest planned for Friday. Estimated yield: 1,200 kg. Stop feeding 24h before.", time: "2 days ago", type: "info", read: true },
-  { icon: Fish, title: "New Batch Allocated", msg: "Batch NB-2405: 5,000 fry transferred to your Pond C1 from nursery. Monitor closely.", time: "3 days ago", type: "info", read: true },
-  { icon: Thermometer, title: "Weather Advisory", msg: "Heatwave expected next week. Temperatures may exceed 35°C. Prepare shade nets and increase aeration.", time: "4 days ago", type: "warning", read: true },
-  { icon: AlertTriangle, title: "Medicine Application Reminder", msg: "Scheduled Oxytetracycline treatment for Pond B2 tomorrow at 8 AM. Follow dosage instructions.", time: "5 days ago", type: "warning", read: true },
-  { icon: CheckCircle2, title: "Training Module Available", msg: "New training video on FCR optimization is available. Watch it in the Resources section.", time: "1 week ago", type: "info", read: true },
-];
+import { AlertTriangle, Package, CheckCircle2, DollarSign, Calendar, Thermometer, Fish } from "lucide-react";
 
 const Notifications = () => {
+  const { t } = useLanguage();
+
+  const notifications = [
+    { icon: AlertTriangle, title: t("waterTempAlert"), msg: t("waterTempAlertMsg"), time: "3h", type: "warning", read: false },
+    { icon: Package, title: t("feedDeliveryScheduled"), msg: t("feedDeliveryMsg"), time: "5h", type: "info", read: false },
+    { icon: DollarSign, title: t("paymentProcessed"), msg: t("paymentProcessedMsg"), time: "1d", type: "success", read: false },
+    { icon: CheckCircle2, title: t("reportReviewed"), msg: t("reportReviewedMsg"), time: "1d", type: "success", read: true },
+    { icon: Calendar, title: t("harvestScheduled"), msg: t("harvestScheduledMsg"), time: "2d", type: "info", read: true },
+    { icon: Fish, title: t("newBatchAllocated"), msg: t("newBatchAllocatedMsg"), time: "3d", type: "info", read: true },
+    { icon: Thermometer, title: t("weatherAdvisory"), msg: t("weatherAdvisoryMsg"), time: "4d", type: "warning", read: true },
+    { icon: AlertTriangle, title: t("medicineReminder"), msg: t("medicineReminderMsg"), time: "5d", type: "warning", read: true },
+    { icon: CheckCircle2, title: t("trainingAvailable"), msg: t("trainingAvailableMsg"), time: "1sem", type: "info", read: true },
+  ];
+
   const unread = notifications.filter(n => !n.read).length;
 
   return (
     <div className="space-y-6 sm:pt-14">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-bold text-foreground font-heading">Notifications</h1>
-          <p className="text-muted-foreground text-sm mt-1">Stay updated with your farm alerts</p>
+          <h1 className="text-xl font-bold text-foreground font-heading">{t("notificationsTitle")}</h1>
+          <p className="text-muted-foreground text-sm mt-1">{t("notificationsDesc")}</p>
         </div>
-        {unread > 0 && <Badge className="gradient-primary text-primary-foreground">{unread} new</Badge>}
+        {unread > 0 && <Badge className="gradient-primary text-primary-foreground">{unread} {t("new")}</Badge>}
       </div>
 
       <div className="space-y-3">
