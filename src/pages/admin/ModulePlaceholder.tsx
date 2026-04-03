@@ -102,7 +102,7 @@ export const Breeding = () => {
           <CardContent>
             <ResponsiveContainer width="100%" height={200}>
               <PieChart>
-                <Pie data={[{ name: "GIFT", value: 22 }, { name: "Nilo", value: 18 }, { name: "Vermelha", value: 8 }]} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={3}>
+                <Pie data={[{ name: "GIFT", value: 22 }, { name: "Nilo", value: 18 }, { name: "Vermelha", value: 8 }]} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={3} label={renderPieLabel}>
                   {[0, 1, 2].map((i) => <Cell key={i} fill={COLORS[i]} />)}
                 </Pie>
                 <Tooltip />
