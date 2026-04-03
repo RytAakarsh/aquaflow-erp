@@ -12,7 +12,7 @@ import LanguageToggle from "@/components/LanguageToggle";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   const { user, logout } = useAuth();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
 
