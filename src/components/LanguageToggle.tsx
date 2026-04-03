@@ -14,8 +14,8 @@ const LanguageToggle = () => {
       title={language === "en" ? "Mudar para Português" : "Switch to English"}
     >
       <Globe className="w-4 h-4" />
-      <span className="hidden sm:inline">{language === "en" ? "PT" : "EN"}</span>
-      <span className="sm:hidden">{language === "en" ? "PT" : "EN"}</span>
+      <span className="hidden sm:inline">{language === "en" ? "EN" : "PT"}</span>
+      <span className="sm:hidden">{language === "en" ? "EN" : "PT"}</span>
     </Button>
   );
 };
