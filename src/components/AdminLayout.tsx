@@ -22,6 +22,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
     { to: "/admin/hatchery", icon: Bug, label: t("hatchery") },
     { to: "/admin/nursery", icon: Waves, label: t("nursery") },
     { to: "/admin/farmers", icon: Users, label: t("farmers") },
+    { to: "/admin/farmer-updates", icon: Camera, label: language === "pt" ? "Atualizações" : "Updates" },
     { to: "/admin/processing", icon: Factory, label: t("processing") },
     { to: "/admin/inventory", icon: Package, label: t("inventory") },
     { to: "/admin/finance", icon: DollarSign, label: t("finance") },
