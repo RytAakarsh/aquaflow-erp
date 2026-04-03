@@ -4,7 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   Fish, LayoutDashboard, Egg, Bug, Waves, Users, Factory, Package,
-  DollarSign, BarChart3, Bell, LogOut, Menu, X, ChevronRight
+  DollarSign, BarChart3, Bell, LogOut, Menu, X, ChevronRight, Camera
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -12,7 +12,7 @@ import LanguageToggle from "@/components/LanguageToggle";
 
 const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   const { user, logout } = useAuth();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const location = useLocation();
 
@@ -22,6 +22,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
     { to: "/admin/hatchery", icon: Bug, label: t("hatchery") },
     { to: "/admin/nursery", icon: Waves, label: t("nursery") },
     { to: "/admin/farmers", icon: Users, label: t("farmers") },
+    { to: "/admin/farmer-updates", icon: Camera, label: language === "pt" ? "Atualizações" : "Updates" },
     { to: "/admin/processing", icon: Factory, label: t("processing") },
     { to: "/admin/inventory", icon: Package, label: t("inventory") },
     { to: "/admin/finance", icon: DollarSign, label: t("finance") },

@@ -11,6 +11,7 @@ import FarmerLayout from "./components/FarmerLayout";
 import AdminDashboard from "./pages/admin/Dashboard";
 import Farmers from "./pages/admin/Farmers";
 import { Breeding, Hatchery, Nursery, Processing, Inventory, Finance, Analytics, Alerts } from "./pages/admin/ModulePlaceholder";
+import FarmerUpdates from "./pages/admin/FarmerUpdates";
 import FarmerDashboard from "./pages/farmer/FarmerDashboard";
 import DailyUpdate from "./pages/farmer/DailyUpdate";
 import Tasks from "./pages/farmer/Tasks";
@@ -48,6 +49,7 @@ const AppRoutes = () => {
         <Route path="/admin/hatchery" element={<Hatchery />} />
         <Route path="/admin/nursery" element={<Nursery />} />
         <Route path="/admin/farmers" element={<Farmers />} />
+        <Route path="/admin/farmer-updates" element={<FarmerUpdates />} />
         <Route path="/admin/processing" element={<Processing />} />
         <Route path="/admin/inventory" element={<Inventory />} />
         <Route path="/admin/finance" element={<Finance />} />

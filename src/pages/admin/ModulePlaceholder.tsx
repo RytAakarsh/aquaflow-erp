@@ -14,6 +14,18 @@ import {
   LineChart, Line, PieChart, Pie, Cell, AreaChart, Area
 } from "recharts";
 
+const renderPieLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
+  const RADIAN = Math.PI / 180;
+  const radius = outerRadius + 18;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+  return (
+    <text x={x} y={y} fill="hsl(210,18%,40%)" textAnchor={x > cx ? "start" : "end"} dominantBaseline="central" fontSize={12} fontWeight={600}>
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
+
 const COLORS = ["hsl(199,89%,32%)", "hsl(168,60%,42%)", "hsl(38,92%,50%)", "hsl(199,89%,48%)", "hsl(152,60%,40%)", "hsl(0,72%,51%)"];
 
 // ============ BREEDING ============
@@ -90,7 +102,7 @@ export const Breeding = () => {
           <CardContent>
             <ResponsiveContainer width="100%" height={200}>
               <PieChart>
-                <Pie data={[{ name: "GIFT", value: 22 }, { name: "Nilo", value: 18 }, { name: "Vermelha", value: 8 }]} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={3}>
+                <Pie data={[{ name: "GIFT", value: 22 }, { name: "Nilo", value: 18 }, { name: "Vermelha", value: 8 }]} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={3} label={renderPieLabel}>
                   {[0, 1, 2].map((i) => <Cell key={i} fill={COLORS[i]} />)}
                 </Pie>
                 <Tooltip />
@@ -427,7 +439,7 @@ export const Processing = () => {
           <CardContent>
             <ResponsiveContainer width="100%" height={200}>
               <PieChart>
-                <Pie data={gradeDistribution} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={3}>
+                <Pie data={gradeDistribution} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={3} label={renderPieLabel}>
                   {gradeDistribution.map((_, i) => <Cell key={i} fill={COLORS[i]} />)}
                 </Pie>
                 <Tooltip />
@@ -655,7 +667,7 @@ export const Finance = () => {
           <CardContent>
             <ResponsiveContainer width="100%" height={200}>
               <PieChart>
-                <Pie data={expenseBreakdown} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={3}>
+                <Pie data={expenseBreakdown} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={3} label={renderPieLabel}>
                   {expenseBreakdown.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
                 </Pie>
                 <Tooltip />

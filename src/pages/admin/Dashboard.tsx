@@ -8,8 +8,20 @@ import {
 } from "lucide-react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  LineChart, Line, PieChart, Pie, Cell, AreaChart, Area
+  LineChart, Line, PieChart, Pie, Cell, AreaChart, Area, Label
 } from "recharts";
+
+const renderPieLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
+  const RADIAN = Math.PI / 180;
+  const radius = outerRadius + 18;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+  return (
+    <text x={x} y={y} fill="hsl(210,18%,40%)" textAnchor={x > cx ? "start" : "end"} dominantBaseline="central" fontSize={12} fontWeight={600}>
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
 
 const monthlyData = [
   { month: "Out", production: 4200, mortality: 320, revenue: 820 },
@@ -144,7 +156,7 @@ const AdminDashboard = () => {
           <CardContent>
             <ResponsiveContainer width="100%" height={200}>
               <PieChart>
-                <Pie data={stageData} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={3}>
+                <Pie data={stageData} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value" paddingAngle={3} label={renderPieLabel}>
                   {stageData.map((_, i) => <Cell key={i} fill={COLORS[i]} />)}
                 </Pie>
                 <Tooltip />
