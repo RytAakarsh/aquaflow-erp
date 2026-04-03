@@ -4,7 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   Fish, LayoutDashboard, Egg, Bug, Waves, Users, Factory, Package,
-  DollarSign, BarChart3, Bell, LogOut, Menu, X, ChevronRight
+  DollarSign, BarChart3, Bell, LogOut, Menu, X, ChevronRight, Camera
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
