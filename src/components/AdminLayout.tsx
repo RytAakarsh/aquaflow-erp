@@ -4,7 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   Fish, LayoutDashboard, Egg, Bug, Waves, Users, Factory, Package,
-  DollarSign, BarChart3, Bell, LogOut, Menu, X, ChevronRight, Camera
+  DollarSign, BarChart3, Bell, LogOut, Menu, X, ChevronRight, Camera, Activity
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -19,6 +19,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
   const NAV_ITEMS = [
     { to: "/admin", icon: LayoutDashboard, label: t("dashboard"), end: true },
     { to: "/admin/breeding", icon: Egg, label: t("breeding") },
+    { to: "/admin/breeding-overview", icon: Activity, label: language === "pt" ? "Fluxo Reprodução" : "Breeding Flow" },
     { to: "/admin/hatchery", icon: Bug, label: t("hatchery") },
     { to: "/admin/nursery", icon: Waves, label: t("nursery") },
     { to: "/admin/farmers", icon: Users, label: t("farmers") },
