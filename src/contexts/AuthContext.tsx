@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useCallback } from "react";
 
-export type UserRole = "admin" | "farmer";
+export type UserRole = "admin" | "farmer" | "logistics" | "production";
 
 export interface User {
   id: string;
@@ -33,7 +33,11 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
-const ADMIN_CREDENTIALS = { email: "aqua@gmail.com", password: "Aqua@123" };
+const STATIC_USERS = [
+  { email: "aqua@gmail.com", password: "Aqua@123", user: { id: "admin-1", name: "Admin", role: "admin" as UserRole } },
+  { email: "logistic@gmail.com", password: "aqua@123", user: { id: "logistics-1", name: "Logistics Manager", role: "logistics" as UserRole } },
+  { email: "production@gmail.com", password: "aqua@123", user: { id: "production-1", name: "Production Manager", role: "production" as UserRole } },
+];
 
 const INITIAL_FARMERS: Farmer[] = [
   { id: "f1", name: "Carlos Silva", email: "carlos@farm.com", phone: "+55 11 98765-4321", location: "São Paulo", pondCount: 5, status: "active", joinDate: "2025-06-15", password: "farmer123" },
@@ -47,8 +51,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [farmers, setFarmers] = useState<Farmer[]>(INITIAL_FARMERS);
 
   const login = useCallback((email: string, password: string): boolean => {
-    if (email === ADMIN_CREDENTIALS.email && password === ADMIN_CREDENTIALS.password) {
-      setUser({ id: "admin-1", email, name: "Admin", role: "admin" });
+    const staticUser = STATIC_USERS.find((u) => u.email === email && u.password === password);
+    if (staticUser) {
+      setUser({ id: staticUser.user.id, email, name: staticUser.user.name, role: staticUser.user.role });
       return true;
     }
     const farmer = farmers.find((f) => f.email === email && f.password === password);
