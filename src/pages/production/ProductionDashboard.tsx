@@ -19,12 +19,12 @@ const ProductionDashboard = () => {
   const pt = language === "pt";
 
   const stats = [
-    { label: pt ? "Recebimento Hoje" : "Today's Intake", value: "2.400 kg", icon: PackageOpen, change: "+8%", color: "text-blue-500" },
-    { label: pt ? "Em Processamento" : "Processing", value: "1.800 kg", icon: Scissors, change: "3 lotes", color: "text-orange-500" },
-    { label: pt ? "Embalados" : "Packaged", value: "1.450 kg", icon: Package, change: pt ? "320 pacotes" : "320 packs", color: "text-green-500" },
-    { label: pt ? "Em Estoque" : "In Storage", value: "12.600 kg", icon: Warehouse, change: pt ? "85% capacidade" : "85% capacity", color: "text-violet-500" },
-    { label: pt ? "Vendas do Mês" : "Month Sales", value: "R$385.000", icon: DollarSign, change: "+15%", color: "text-emerald-500" },
-    { label: pt ? "Lucro Líquido" : "Net Profit", value: "R$98.500", icon: TrendingUp, change: "+12%", color: "text-cyan-500" },
+    { label: pt ? "Recebimento Hoje" : "Today's Intake", value: "800.00 kg", icon: PackageOpen, change: "+8%", color: "text-blue-500" },
+    { label: pt ? "Em Processamento" : "Processing", value: "700.00 kg", icon: Scissors, change: "3 lotes", color: "text-orange-500" },
+    { label: pt ? "Embalados" : "Packaged", value: "500.00kg", icon: Package, change: pt ? "320 pacotes" : "320 packs", color: "text-green-500" },
+    { label: pt ? "Em Estoque" : "In Storage", value: "200.00 kg", icon: Warehouse, change: pt ? "85% capacidade" : "85% capacity", color: "text-violet-500" },
+    { label: pt ? "Vendas do Mês" : "Month Sales", value: "R$10M.000", icon: DollarSign, change: "+15%", color: "text-emerald-500" },
+    { label: pt ? "Lucro Líquido" : "Net Profit", value: "R$500.00", icon: TrendingUp, change: "+12%", color: "text-cyan-500" },
   ];
 
   const weeklyProcessing = [
