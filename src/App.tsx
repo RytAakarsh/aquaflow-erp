@@ -9,6 +9,8 @@ import { BreedingProvider } from "@/contexts/BreedingContext";
 import Login from "./pages/Login";
 import AdminLayout from "./components/AdminLayout";
 import FarmerLayout from "./components/FarmerLayout";
+import LogisticsLayout from "./components/LogisticsLayout";
+import ProductionLayout from "./components/ProductionLayout";
 import AdminDashboard from "./pages/admin/Dashboard";
 import Farmers from "./pages/admin/Farmers";
 import { Breeding, Hatchery, Nursery, Processing, Inventory, Finance, Analytics, Alerts } from "./pages/admin/ModulePlaceholder";
@@ -22,6 +24,19 @@ import AquaChat from "./pages/farmer/AquaChat";
 import BroodstockEntry from "./pages/farmer/BroodstockEntry";
 import BreedingGroups from "./pages/farmer/BreedingGroups";
 import EggBatchManagement from "./pages/farmer/EggBatchManagement";
+import LogisticsDashboard from "./pages/logistics/LogisticsDashboard";
+import TransportRequests from "./pages/logistics/TransportRequests";
+import VehicleManagement from "./pages/logistics/VehicleManagement";
+import DispatchTracking from "./pages/logistics/DispatchTracking";
+import DeliveryConfirmation from "./pages/logistics/DeliveryConfirmation";
+import LogisticsReports from "./pages/logistics/LogisticsReports";
+import ProductionDashboard from "./pages/production/ProductionDashboard";
+import IntakeManagement from "./pages/production/IntakeManagement";
+import ProcessingUnit from "./pages/production/ProcessingUnit";
+import PackagingPanel from "./pages/production/PackagingPanel";
+import StorageInventory from "./pages/production/StorageInventory";
+import SalesPanel from "./pages/production/SalesPanel";
+import ProfitDashboard from "./pages/production/ProfitDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,6 +61,39 @@ const AppRoutes = () => {
           <Route path="*" element={<Navigate to="/farmer" replace />} />
         </Routes>
       </FarmerLayout>
+    );
+  }
+
+  if (user.role === "logistics") {
+    return (
+      <LogisticsLayout>
+        <Routes>
+          <Route path="/logistics" element={<LogisticsDashboard />} />
+          <Route path="/logistics/requests" element={<TransportRequests />} />
+          <Route path="/logistics/vehicles" element={<VehicleManagement />} />
+          <Route path="/logistics/tracking" element={<DispatchTracking />} />
+          <Route path="/logistics/deliveries" element={<DeliveryConfirmation />} />
+          <Route path="/logistics/reports" element={<LogisticsReports />} />
+          <Route path="*" element={<Navigate to="/logistics" replace />} />
+        </Routes>
+      </LogisticsLayout>
+    );
+  }
+
+  if (user.role === "production") {
+    return (
+      <ProductionLayout>
+        <Routes>
+          <Route path="/production" element={<ProductionDashboard />} />
+          <Route path="/production/intake" element={<IntakeManagement />} />
+          <Route path="/production/processing" element={<ProcessingUnit />} />
+          <Route path="/production/packaging" element={<PackagingPanel />} />
+          <Route path="/production/storage" element={<StorageInventory />} />
+          <Route path="/production/sales" element={<SalesPanel />} />
+          <Route path="/production/profit" element={<ProfitDashboard />} />
+          <Route path="*" element={<Navigate to="/production" replace />} />
+        </Routes>
+      </ProductionLayout>
     );
   }
 
