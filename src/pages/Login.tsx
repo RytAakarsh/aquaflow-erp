@@ -125,9 +125,12 @@ const Login = () => {
             </CardContent>
           </Card>
 
-          <p className="text-center text-xs text-muted-foreground mt-6">
-            {t("loginHint")}
-          </p>
+          <div className="text-center text-xs text-muted-foreground mt-6 space-y-1">
+            <p>Admin: aqua@gmail.com / Aqua@123</p>
+            <p>Farmer: carlos@farm.com / farmer123</p>
+            <p>Logistics: logistic@gmail.com / aqua@123</p>
+            <p>Production: production@gmail.com / aqua@123</p>
+          </div>
         </div>
       </div>
     </div>
