@@ -37,6 +37,7 @@ import PackagingPanel from "./pages/production/PackagingPanel";
 import StorageInventory from "./pages/production/StorageInventory";
 import SalesPanel from "./pages/production/SalesPanel";
 import ProfitDashboard from "./pages/production/ProfitDashboard";
+import AdminAI from "./pages/admin/AdminAI";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -112,6 +113,7 @@ const AppRoutes = () => {
         <Route path="/admin/finance" element={<Finance />} />
         <Route path="/admin/analytics" element={<Analytics />} />
         <Route path="/admin/alerts" element={<Alerts />} />
+        <Route path="/admin/ai" element={<AdminAI />} />
         <Route path="*" element={<Navigate to="/admin" replace />} />
       </Routes>
     </AdminLayout>

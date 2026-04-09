@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Plus, PackageOpen } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const IntakeManagement = () => {
@@ -15,14 +15,15 @@ const IntakeManagement = () => {
   const pt = language === "pt";
 
   const [intakes, setIntakes] = useState([
-    { id: "INT-001", batchId: "PB-601", source: "Carlos Silva - São Paulo", qty: "800 kg", grade: "A", receivedAt: "2026-04-07 08:30", transportId: "TR-001", status: pt ? "Processando" : "Processing" },
-    { id: "INT-002", batchId: "PB-602", source: "João Santos - Minas Gerais", qty: "600 kg", grade: "A+", receivedAt: "2026-04-07 10:15", transportId: "TR-006", status: pt ? "Concluído" : "Completed" },
-    { id: "INT-003", batchId: "PB-603", source: "Pedro Oliveira - Goiás", qty: "1.000 kg", grade: "B", receivedAt: "2026-04-08 07:45", transportId: "TR-003", status: pt ? "QC Pendente" : "QC Pending" },
-    { id: "INT-004", batchId: "PB-604", source: "Rafael Costa - Bahia", qty: "500 kg", grade: "—", receivedAt: "2026-04-08 11:00", transportId: "TR-008", status: pt ? "Recebido" : "Received" },
+    { id: "INT-001", batchId: "PB-601", source: "Carlos Silva - São Paulo", qty: "8.500 kg", grade: "A", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia", receivedAt: "2026-04-07 08:30", transportId: "TR-001", status: pt ? "Processando" : "Processing" },
+    { id: "INT-002", batchId: "PB-602", source: "João Santos - Minas Gerais", qty: "6.200 kg", grade: "A+", fishType: pt ? "Tilápia GIFT" : "GIFT Tilapia", receivedAt: "2026-04-07 10:15", transportId: "TR-006", status: pt ? "Concluído" : "Completed" },
+    { id: "INT-003", batchId: "PB-603", source: "Pedro Oliveira - Goiás", qty: "12.000 kg", grade: "B", fishType: "Tambaqui", receivedAt: "2026-04-08 07:45", transportId: "TR-003", status: pt ? "QC Pendente" : "QC Pending" },
+    { id: "INT-004", batchId: "PB-604", source: "Rafael Costa - Bahia", qty: "5.800 kg", grade: "—", fishType: "Pintado", receivedAt: "2026-04-08 11:00", transportId: "TR-008", status: pt ? "Recebido" : "Received" },
+    { id: "INT-005", batchId: "PB-605", source: "Marcos Lima - Paraná", qty: "9.400 kg", grade: "A", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia", receivedAt: "2026-04-08 14:30", transportId: "TR-012", status: pt ? "Processando" : "Processing" },
   ]);
 
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [form, setForm] = useState({ source: "", qty: "", grade: "A", transportId: "" });
+  const [form, setForm] = useState({ source: "", qty: "", grade: "A", transportId: "", fishType: "Tilápia Nilo" });
 
   const handleAdd = () => {
     if (!form.source || !form.qty) return;
@@ -32,12 +33,13 @@ const IntakeManagement = () => {
       source: form.source,
       qty: form.qty,
       grade: form.grade,
+      fishType: form.fishType,
       receivedAt: new Date().toLocaleString(),
       transportId: form.transportId || "—",
       status: pt ? "Recebido" : "Received",
     };
     setIntakes([newIntake, ...intakes]);
-    setForm({ source: "", qty: "", grade: "A", transportId: "" });
+    setForm({ source: "", qty: "", grade: "A", transportId: "", fishType: "Tilápia Nilo" });
     setDialogOpen(false);
     toast({ title: pt ? "Recebimento Registrado" : "Intake Recorded", description: `${newIntake.batchId}` });
   };
@@ -62,7 +64,17 @@ const IntakeManagement = () => {
             <DialogHeader><DialogTitle>{pt ? "Registrar Recebimento" : "Record Intake"}</DialogTitle></DialogHeader>
             <div className="space-y-3">
               <Input placeholder={pt ? "Origem (ex: Carlos Silva - SP)" : "Source (e.g. Carlos Silva - SP)"} value={form.source} onChange={e => setForm({ ...form, source: e.target.value })} />
-              <Input placeholder={pt ? "Quantidade (ex: 800 kg)" : "Quantity (e.g. 800 kg)"} value={form.qty} onChange={e => setForm({ ...form, qty: e.target.value })} />
+              <Input placeholder={pt ? "Quantidade (ex: 8.500 kg)" : "Quantity (e.g. 8,500 kg)"} value={form.qty} onChange={e => setForm({ ...form, qty: e.target.value })} />
+              <Select value={form.fishType} onValueChange={v => setForm({ ...form, fishType: v })}>
+                <SelectTrigger><SelectValue placeholder={pt ? "Espécie" : "Fish Species"} /></SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Tilápia Nilo">{pt ? "Tilápia Nilo" : "Nile Tilapia"}</SelectItem>
+                  <SelectItem value="Tilápia GIFT">{pt ? "Tilápia GIFT" : "GIFT Tilapia"}</SelectItem>
+                  <SelectItem value="Tambaqui">Tambaqui</SelectItem>
+                  <SelectItem value="Pintado">Pintado</SelectItem>
+                  <SelectItem value="Pacu">Pacu</SelectItem>
+                </SelectContent>
+              </Select>
               <Select value={form.grade} onValueChange={v => setForm({ ...form, grade: v })}>
                 <SelectTrigger><SelectValue placeholder={pt ? "Classe" : "Grade"} /></SelectTrigger>
                 <SelectContent>
@@ -81,9 +93,9 @@ const IntakeManagement = () => {
 
       <div className="grid sm:grid-cols-4 gap-3">
         <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">{intakes.length}</p><p className="text-xs text-muted-foreground">{pt ? "Total de Lotes" : "Total Batches"}</p></CardContent></Card>
-        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">2.900 kg</p><p className="text-xs text-muted-foreground">{pt ? "Total Recebido" : "Total Received"}</p></CardContent></Card>
+        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">41.900 kg</p><p className="text-xs text-muted-foreground">{pt ? "Total Recebido" : "Total Received"}</p></CardContent></Card>
         <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">A</p><p className="text-xs text-muted-foreground">{pt ? "Classe Média" : "Avg Grade"}</p></CardContent></Card>
-        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">4</p><p className="text-xs text-muted-foreground">{pt ? "Fazendas" : "Farms"}</p></CardContent></Card>
+        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">5</p><p className="text-xs text-muted-foreground">{pt ? "Fazendas" : "Farms"}</p></CardContent></Card>
       </div>
 
       <Card>
@@ -93,6 +105,7 @@ const IntakeManagement = () => {
               <th className="text-left p-3 font-medium">ID</th>
               <th className="text-left p-3 font-medium">{pt ? "Lote" : "Batch"}</th>
               <th className="text-left p-3 font-medium">{pt ? "Origem" : "Source"}</th>
+              <th className="text-left p-3 font-medium">{pt ? "Espécie" : "Species"}</th>
               <th className="text-left p-3 font-medium">{pt ? "Quantidade" : "Quantity"}</th>
               <th className="text-left p-3 font-medium">{pt ? "Classe" : "Grade"}</th>
               <th className="text-left p-3 font-medium">{pt ? "Transporte" : "Transport"}</th>
@@ -105,6 +118,7 @@ const IntakeManagement = () => {
                   <td className="p-3 font-mono text-xs">{r.id}</td>
                   <td className="p-3 font-mono text-xs">{r.batchId}</td>
                   <td className="p-3">{r.source}</td>
+                  <td className="p-3"><Badge variant="secondary" className="text-xs">{r.fishType}</Badge></td>
                   <td className="p-3">{r.qty}</td>
                   <td className="p-3"><Badge variant="secondary">{r.grade}</Badge></td>
                   <td className="p-3 font-mono text-xs">{r.transportId}</td>

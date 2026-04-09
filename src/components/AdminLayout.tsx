@@ -4,7 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   Fish, LayoutDashboard, Egg, Bug, Waves, Users, Factory, Package,
-  DollarSign, BarChart3, Bell, LogOut, Menu, X, ChevronRight, Camera, Activity
+  DollarSign, BarChart3, Bell, LogOut, Menu, X, ChevronRight, Camera, Activity, Sparkles
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -29,6 +29,7 @@ const AdminLayout = ({ children }: { children: React.ReactNode }) => {
     { to: "/admin/finance", icon: DollarSign, label: t("finance") },
     { to: "/admin/analytics", icon: BarChart3, label: t("analytics") },
     { to: "/admin/alerts", icon: Bell, label: t("alerts") },
+    { to: "/admin/ai", icon: Sparkles, label: "AquaFlow AI" },
   ];
 
   return (

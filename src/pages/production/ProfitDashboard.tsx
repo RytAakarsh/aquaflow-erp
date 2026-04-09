@@ -18,17 +18,17 @@ const ProfitDashboard = () => {
   const pt = language === "pt";
 
   const profitData = [
-    { month: "Jan", revenue: 320000, transport: 22000, processing: 45000, packaging: 18000, other: 15000, profit: 220000 },
-    { month: "Fev", revenue: 345000, transport: 24500, processing: 48000, packaging: 19500, other: 16000, profit: 237000 },
-    { month: "Mar", revenue: 370000, transport: 26800, processing: 52000, packaging: 21000, other: 17000, profit: 253200 },
-    { month: "Abr", revenue: 385000, transport: 28500, processing: 54000, packaging: 22000, other: 18000, profit: 262500 },
+    { month: "Jan", revenue: 8200000, transport: 520000, processing: 1850000, packaging: 680000, other: 350000, profit: 4800000 },
+    { month: "Fev", revenue: 9500000, transport: 610000, processing: 2100000, packaging: 750000, other: 400000, profit: 5640000 },
+    { month: "Mar", revenue: 11200000, transport: 720000, processing: 2450000, packaging: 890000, other: 480000, profit: 6660000 },
+    { month: "Abr", revenue: 13800000, transport: 850000, processing: 2980000, packaging: 1050000, other: 520000, profit: 8400000 },
   ];
 
   const costBreakdown = [
-    { name: pt ? "Transporte" : "Transport", value: 28500 },
-    { name: pt ? "Processamento" : "Processing", value: 54000 },
-    { name: pt ? "Embalagem" : "Packaging", value: 22000 },
-    { name: pt ? "Outros" : "Other", value: 18000 },
+    { name: pt ? "Transporte" : "Transport", value: 850000 },
+    { name: pt ? "Processamento" : "Processing", value: 2980000 },
+    { name: pt ? "Embalagem" : "Packaging", value: 1050000 },
+    { name: pt ? "Outros" : "Other", value: 520000 },
   ];
 
   const latest = profitData[profitData.length - 1];
@@ -43,10 +43,10 @@ const ProfitDashboard = () => {
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        <Card><CardContent className="p-4"><div className="flex items-center gap-2 mb-1"><DollarSign className="w-5 h-5 text-green-500" /><span className="text-xs text-muted-foreground">{pt ? "Receita" : "Revenue"}</span></div><p className="text-xl font-bold">R${(latest.revenue / 1000).toFixed(0)}K</p><p className="text-xs text-green-500 flex items-center gap-1"><TrendingUp className="w-3 h-3" />+4.1%</p></CardContent></Card>
-        <Card><CardContent className="p-4"><div className="flex items-center gap-2 mb-1"><TrendingDown className="w-5 h-5 text-red-500" /><span className="text-xs text-muted-foreground">{pt ? "Custos" : "Costs"}</span></div><p className="text-xl font-bold">R${(totalCost / 1000).toFixed(0)}K</p><p className="text-xs text-red-500">-2.3%</p></CardContent></Card>
-        <Card><CardContent className="p-4"><div className="flex items-center gap-2 mb-1"><TrendingUp className="w-5 h-5 text-emerald-500" /><span className="text-xs text-muted-foreground">{pt ? "Lucro Líquido" : "Net Profit"}</span></div><p className="text-xl font-bold">R${(latest.profit / 1000).toFixed(0)}K</p><p className="text-xs text-emerald-500 flex items-center gap-1"><TrendingUp className="w-3 h-3" />+3.7%</p></CardContent></Card>
-        <Card><CardContent className="p-4"><div className="flex items-center gap-2 mb-1"><Percent className="w-5 h-5 text-blue-500" /><span className="text-xs text-muted-foreground">{pt ? "Margem" : "Margin"}</span></div><p className="text-xl font-bold">{margin}%</p><p className="text-xs text-blue-500">{pt ? "Meta: 70%" : "Target: 70%"}</p></CardContent></Card>
+        <Card><CardContent className="p-4"><div className="flex items-center gap-2 mb-1"><DollarSign className="w-5 h-5 text-green-500" /><span className="text-xs text-muted-foreground">{pt ? "Receita" : "Revenue"}</span></div><p className="text-xl font-bold">R${(latest.revenue / 1000000).toFixed(1)}M</p><p className="text-xs text-green-500 flex items-center gap-1"><TrendingUp className="w-3 h-3" />+23.2%</p></CardContent></Card>
+        <Card><CardContent className="p-4"><div className="flex items-center gap-2 mb-1"><TrendingDown className="w-5 h-5 text-red-500" /><span className="text-xs text-muted-foreground">{pt ? "Custos" : "Costs"}</span></div><p className="text-xl font-bold">R${(totalCost / 1000000).toFixed(1)}M</p><p className="text-xs text-red-500">+8.5%</p></CardContent></Card>
+        <Card><CardContent className="p-4"><div className="flex items-center gap-2 mb-1"><TrendingUp className="w-5 h-5 text-emerald-500" /><span className="text-xs text-muted-foreground">{pt ? "Lucro Líquido" : "Net Profit"}</span></div><p className="text-xl font-bold">R${(latest.profit / 1000000).toFixed(1)}M</p><p className="text-xs text-emerald-500 flex items-center gap-1"><TrendingUp className="w-3 h-3" />+26.1%</p></CardContent></Card>
+        <Card><CardContent className="p-4"><div className="flex items-center gap-2 mb-1"><Percent className="w-5 h-5 text-blue-500" /><span className="text-xs text-muted-foreground">{pt ? "Margem" : "Margin"}</span></div><p className="text-xl font-bold">{margin}%</p><p className="text-xs text-blue-500">{pt ? "Meta: 65%" : "Target: 65%"}</p></CardContent></Card>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-4">
@@ -57,8 +57,8 @@ const ProfitDashboard = () => {
               <AreaChart data={profitData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                 <XAxis dataKey="month" tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" />
-                <YAxis tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" />
-                <Tooltip />
+                <YAxis tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" tickFormatter={v => `${(v/1000000).toFixed(0)}M`} />
+                <Tooltip formatter={(v: number) => `R$${(v/1000000).toFixed(2)}M`} />
                 <Area type="monotone" dataKey="revenue" stroke="hsl(var(--primary))" fill="hsl(var(--primary))" fillOpacity={0.15} name={pt ? "Receita" : "Revenue"} />
                 <Area type="monotone" dataKey="profit" stroke="#10b981" fill="#10b981" fillOpacity={0.15} name={pt ? "Lucro" : "Profit"} />
               </AreaChart>
@@ -74,7 +74,7 @@ const ProfitDashboard = () => {
                 <Pie data={costBreakdown} cx="50%" cy="50%" outerRadius={80} dataKey="value" label={renderPieLabel}>
                   {costBreakdown.map((_, i) => <Cell key={i} fill={COLORS[i]} />)}
                 </Pie>
-                <Tooltip />
+                <Tooltip formatter={(v: number) => `R$${(v/1000).toFixed(0)}K`} />
               </PieChart>
             </ResponsiveContainer>
           </CardContent>
@@ -88,8 +88,8 @@ const ProfitDashboard = () => {
             <BarChart data={profitData}>
               <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
               <XAxis dataKey="month" tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" />
-              <YAxis tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" />
-              <Tooltip />
+              <YAxis tick={{ fontSize: 11 }} stroke="hsl(var(--muted-foreground))" tickFormatter={v => `${(v/1000000).toFixed(1)}M`} />
+              <Tooltip formatter={(v: number) => `R$${(v/1000).toFixed(0)}K`} />
               <Bar dataKey="transport" stackId="cost" fill="#f59e0b" name={pt ? "Transporte" : "Transport"} />
               <Bar dataKey="processing" stackId="cost" fill="#ef4444" name={pt ? "Processamento" : "Processing"} />
               <Bar dataKey="packaging" stackId="cost" fill="#8b5cf6" name={pt ? "Embalagem" : "Packaging"} />
