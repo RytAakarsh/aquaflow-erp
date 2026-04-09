@@ -1,8 +1,8 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Truck, Package, MapPin, AlertTriangle, Clock, CheckCircle } from "lucide-react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, AreaChart, Area } from "recharts";
+import { Truck, Package, MapPin, AlertTriangle, Clock, CheckCircle, DollarSign } from "lucide-react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, AreaChart, Area } from "recharts";
 
 const COLORS = ["hsl(var(--primary))", "#f59e0b", "#10b981", "#ef4444", "#8b5cf6", "#ec4899"];
 
@@ -19,21 +19,21 @@ const LogisticsDashboard = () => {
   const pt = language === "pt";
 
   const stats = [
-    { label: pt ? "Total de Entregas" : "Total Deliveries", value: "156", icon: Truck, change: "+12%", color: "text-blue-500" },
-    { label: pt ? "Em Trânsito" : "In Transit", value: "8", icon: MapPin, change: "3 urgentes", color: "text-orange-500" },
-    { label: pt ? "Pendentes" : "Pending", value: "14", icon: Clock, change: pt ? "5 hoje" : "5 today", color: "text-yellow-500" },
-    { label: pt ? "Entregues Hoje" : "Delivered Today", value: "6", icon: CheckCircle, change: "100%", color: "text-green-500" },
-    { label: pt ? "Custo de Transporte" : "Transport Cost", value: "R$28.500", icon: Package, change: "-5%", color: "text-violet-500" },
-    { label: pt ? "Perdas/Danos" : "Losses/Damages", value: "0.3%", icon: AlertTriangle, change: pt ? "Meta: <1%" : "Target: <1%", color: "text-red-500" },
+    { label: pt ? "Total de Entregas" : "Total Deliveries", value: "1.560", icon: Truck, change: "+24%", color: "text-blue-500" },
+    { label: pt ? "Em Trânsito" : "In Transit", value: "42", icon: MapPin, change: pt ? "12 urgentes" : "12 urgent", color: "text-orange-500" },
+    { label: pt ? "Pendentes" : "Pending", value: "86", icon: Clock, change: pt ? "28 hoje" : "28 today", color: "text-yellow-500" },
+    { label: pt ? "Entregues Hoje" : "Delivered Today", value: "38", icon: CheckCircle, change: "100%", color: "text-green-500" },
+    { label: pt ? "Custo de Transporte" : "Transport Cost", value: "R$2,85M", icon: DollarSign, change: "-5%", color: "text-violet-500" },
+    { label: pt ? "Perdas/Danos" : "Losses/Damages", value: "0.2%", icon: AlertTriangle, change: pt ? "Meta: <0.5%" : "Target: <0.5%", color: "text-red-500" },
   ];
 
   const weeklyDeliveries = [
-    { day: pt ? "Seg" : "Mon", deliveries: 8, cost: 4200 },
-    { day: pt ? "Ter" : "Tue", deliveries: 12, cost: 5800 },
-    { day: pt ? "Qua" : "Wed", deliveries: 6, cost: 3100 },
-    { day: pt ? "Qui" : "Thu", deliveries: 10, cost: 4900 },
-    { day: pt ? "Sex" : "Fri", deliveries: 14, cost: 6500 },
-    { day: pt ? "Sáb" : "Sat", deliveries: 4, cost: 2200 },
+    { day: pt ? "Seg" : "Mon", deliveries: 48, cost: 420000 },
+    { day: pt ? "Ter" : "Tue", deliveries: 62, cost: 580000 },
+    { day: pt ? "Qua" : "Wed", deliveries: 36, cost: 310000 },
+    { day: pt ? "Qui" : "Thu", deliveries: 55, cost: 490000 },
+    { day: pt ? "Sex" : "Fri", deliveries: 72, cost: 650000 },
+    { day: pt ? "Sáb" : "Sat", deliveries: 24, cost: 220000 },
   ];
 
   const itemTypeData = [
@@ -44,18 +44,18 @@ const LogisticsDashboard = () => {
   ];
 
   const monthlyTrend = [
-    { month: "Jan", deliveries: 120, cost: 22000 },
-    { month: "Fev", deliveries: 135, cost: 24500 },
-    { month: "Mar", deliveries: 148, cost: 26800 },
-    { month: "Abr", deliveries: 156, cost: 28500 },
+    { month: "Jan", deliveries: 1200, cost: 2200000 },
+    { month: "Fev", deliveries: 1350, cost: 2450000 },
+    { month: "Mar", deliveries: 1480, cost: 2680000 },
+    { month: "Abr", deliveries: 1560, cost: 2850000 },
   ];
 
   const recentTransports = [
-    { id: "TR-001", from: pt ? "Fazenda Silva - SP" : "Silva Farm - SP", to: pt ? "Processamento Central" : "Central Processing", item: pt ? "Peixes" : "Fish", qty: "1.200 kg", status: pt ? "Entregue" : "Delivered", driver: "Roberto Lima" },
-    { id: "TR-002", from: pt ? "Incubatório - MG" : "Hatchery - MG", to: pt ? "Fazenda Santos" : "Santos Farm", item: pt ? "Alevinos" : "Fry", qty: "5.000 un", status: pt ? "Em Trânsito" : "In Transit", driver: "André Costa" },
-    { id: "TR-003", from: pt ? "Fazenda Oliveira - GO" : "Oliveira Farm - GO", to: pt ? "Processamento Central" : "Central Processing", item: pt ? "Peixes" : "Fish", qty: "800 kg", status: pt ? "Pendente" : "Pending", driver: "—" },
-    { id: "TR-004", from: pt ? "Reprodução - BA" : "Breeding - BA", to: pt ? "Incubatório - MG" : "Hatchery - MG", item: pt ? "Ovos" : "Eggs", qty: "50.000 un", status: pt ? "Entregue" : "Delivered", driver: "Marcos Silva" },
-    { id: "TR-005", from: pt ? "Processamento" : "Processing", to: pt ? "Armazém Central" : "Central Warehouse", item: pt ? "Embalados" : "Packaged", qty: "600 kg", status: pt ? "Em Trânsito" : "In Transit", driver: "Paulo Mendes" },
+    { id: "TR-001", from: pt ? "Fazenda Silva - SP" : "Silva Farm - SP", to: pt ? "Processamento Central" : "Central Processing", item: pt ? "Tilápia Nilo" : "Nile Tilapia", qty: "12.000 kg", status: pt ? "Entregue" : "Delivered", driver: "Roberto Lima" },
+    { id: "TR-002", from: pt ? "Incubatório - MG" : "Hatchery - MG", to: pt ? "Fazenda Santos" : "Santos Farm", item: pt ? "Alevinos" : "Fry", qty: "50.000 un", status: pt ? "Em Trânsito" : "In Transit", driver: "André Costa" },
+    { id: "TR-003", from: pt ? "Fazenda Oliveira - GO" : "Oliveira Farm - GO", to: pt ? "Processamento Central" : "Central Processing", item: "Tambaqui", qty: "8.500 kg", status: pt ? "Pendente" : "Pending", driver: "—" },
+    { id: "TR-004", from: pt ? "Reprodução - BA" : "Breeding - BA", to: pt ? "Incubatório - MG" : "Hatchery - MG", item: pt ? "Ovos" : "Eggs", qty: "500.000 un", status: pt ? "Entregue" : "Delivered", driver: "Marcos Silva" },
+    { id: "TR-005", from: pt ? "Processamento" : "Processing", to: pt ? "Armazém Central" : "Central Warehouse", item: pt ? "Embalados" : "Packaged", qty: "6.200 kg", status: pt ? "Em Trânsito" : "In Transit", driver: "Paulo Mendes" },
   ];
 
   const statusColor = (s: string) => {
@@ -95,7 +95,7 @@ const LogisticsDashboard = () => {
                 <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
                 <XAxis dataKey="day" tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" />
                 <YAxis yAxisId="left" tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" />
-                <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" />
+                <YAxis yAxisId="right" orientation="right" tick={{ fontSize: 12 }} stroke="hsl(var(--muted-foreground))" tickFormatter={v => `${(v/1000).toFixed(0)}K`} />
                 <Tooltip />
                 <Bar yAxisId="left" dataKey="deliveries" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} name={pt ? "Entregas" : "Deliveries"} />
                 <Bar yAxisId="right" dataKey="cost" fill="#f59e0b" radius={[4, 4, 0, 0]} name={pt ? "Custo (R$)" : "Cost (R$)"} />
@@ -143,7 +143,7 @@ const LogisticsDashboard = () => {
                 <th className="text-left py-2 font-medium">ID</th>
                 <th className="text-left py-2 font-medium">{pt ? "Origem" : "From"}</th>
                 <th className="text-left py-2 font-medium">{pt ? "Destino" : "To"}</th>
-                <th className="text-left py-2 font-medium">{pt ? "Item" : "Item"}</th>
+                <th className="text-left py-2 font-medium">{pt ? "Espécie/Item" : "Species/Item"}</th>
                 <th className="text-left py-2 font-medium">{pt ? "Qtd" : "Qty"}</th>
                 <th className="text-left py-2 font-medium">{pt ? "Motorista" : "Driver"}</th>
                 <th className="text-left py-2 font-medium">Status</th>
@@ -155,7 +155,7 @@ const LogisticsDashboard = () => {
                   <td className="py-2.5 font-mono text-xs">{t.id}</td>
                   <td className="py-2.5">{t.from}</td>
                   <td className="py-2.5">{t.to}</td>
-                  <td className="py-2.5">{t.item}</td>
+                  <td className="py-2.5"><Badge variant="secondary" className="text-xs">{t.item}</Badge></td>
                   <td className="py-2.5">{t.qty}</td>
                   <td className="py-2.5">{t.driver}</td>
                   <td className="py-2.5"><Badge className={statusColor(t.status)} variant="secondary">{t.status}</Badge></td>

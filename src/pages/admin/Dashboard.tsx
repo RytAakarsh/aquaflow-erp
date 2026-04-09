@@ -4,11 +4,12 @@ import { Progress } from "@/components/ui/progress";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Fish, Egg, Users, Factory, TrendingUp, TrendingDown, AlertTriangle, Package,
-  Droplets, Activity, Thermometer, Target, Calendar, ArrowUpRight, Clock, CheckCircle2, Zap
+  Droplets, Activity, Thermometer, Target, Calendar, ArrowUpRight, Clock, CheckCircle2, Zap,
+  Truck, DollarSign, Warehouse
 } from "lucide-react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  LineChart, Line, PieChart, Pie, Cell, AreaChart, Area, Label
+  LineChart, Line, PieChart, Pie, Cell, AreaChart, Area
 } from "recharts";
 
 const renderPieLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }: any) => {
@@ -23,13 +24,15 @@ const renderPieLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }:
   );
 };
 
+const COLORS = ["hsl(199,89%,32%)", "hsl(168,60%,42%)", "hsl(38,92%,50%)", "hsl(199,89%,48%)", "hsl(152,60%,40%)"];
+
 const monthlyData = [
-  { month: "Out", production: 4200, mortality: 320, revenue: 820 },
-  { month: "Nov", production: 4800, mortality: 280, revenue: 950 },
-  { month: "Dez", production: 5100, mortality: 250, revenue: 880 },
-  { month: "Jan", production: 5800, mortality: 210, revenue: 1100 },
-  { month: "Fev", production: 6400, mortality: 190, revenue: 1250 },
-  { month: "Mar", production: 7200, mortality: 170, revenue: 1380 },
+  { month: "Out", production: 42000, mortality: 320, revenue: 8200 },
+  { month: "Nov", production: 48000, mortality: 280, revenue: 9500 },
+  { month: "Dez", production: 51000, mortality: 250, revenue: 8800 },
+  { month: "Jan", production: 58000, mortality: 210, revenue: 11000 },
+  { month: "Fev", production: 64000, mortality: 190, revenue: 12500 },
+  { month: "Mar", production: 72000, mortality: 170, revenue: 13800 },
 ];
 
 const stageData = [
@@ -39,8 +42,6 @@ const stageData = [
   { name_en: "Juvenile", name_pt: "Juvenil", value: 20 },
   { name_en: "Grow-out", name_pt: "Engorda", value: 10 },
 ];
-
-const COLORS = ["hsl(199,89%,32%)", "hsl(168,60%,42%)", "hsl(38,92%,50%)", "hsl(199,89%,48%)", "hsl(152,60%,40%)"];
 
 const fcrData = [
   { month: "Out", fcr: 1.9 }, { month: "Nov", fcr: 1.8 }, { month: "Dez", fcr: 1.7 },
@@ -57,14 +58,36 @@ const waterQuality = [
 
 const AdminDashboard = () => {
   const { t, language } = useLanguage();
+  const pt = language === "pt";
 
   const stats = [
-    { label: t("activeBatches"), value: "24", change: "+3", trend: "up", icon: Fish, color: "text-primary" },
-    { label: t("eggsThisMonth"), value: "28.500", change: "+9,6%", trend: "up", icon: Egg, color: "text-accent" },
-    { label: t("activeFarmers"), value: "18", change: "+2", trend: "up", icon: Users, color: "text-info" },
-    { label: t("processingToday"), value: "1.100 kg", change: "+15%", trend: "up", icon: Factory, color: "text-warning" },
-    { label: t("avgSurvivalRate"), value: "89%", change: "+2%", trend: "up", icon: Target, color: "text-success" },
-    { label: t("revenueMTD"), value: "R$138K", change: "+10,4%", trend: "up", icon: TrendingUp, color: "text-primary" },
+    { label: t("activeBatches"), value: "248", change: "+18", trend: "up", icon: Fish, color: "text-primary" },
+    { label: t("eggsThisMonth"), value: "2.85M", change: "+12,6%", trend: "up", icon: Egg, color: "text-accent" },
+    { label: t("activeFarmers"), value: "186", change: "+14", trend: "up", icon: Users, color: "text-info" },
+    { label: t("processingToday"), value: "45.800 kg", change: "+22%", trend: "up", icon: Factory, color: "text-warning" },
+    { label: t("avgSurvivalRate"), value: "94.2%", change: "+3.1%", trend: "up", icon: Target, color: "text-success" },
+    { label: t("revenueMTD"), value: "R$13,8M", change: "+18,4%", trend: "up", icon: TrendingUp, color: "text-primary" },
+  ];
+
+  // Logistics Summary
+  const logisticsStats = [
+    { label: pt ? "Entregas Este Mês" : "Deliveries This Month", value: "1.560", icon: Truck, color: "text-blue-500" },
+    { label: pt ? "Em Trânsito" : "In Transit", value: "42", icon: Truck, color: "text-orange-500" },
+    { label: pt ? "Custo Logístico" : "Logistics Cost", value: "R$2,85M", icon: DollarSign, color: "text-violet-500" },
+  ];
+
+  // Production Summary
+  const productionStats = [
+    { label: pt ? "Produção do Mês" : "Month Production", value: "385.000 kg", icon: Factory, color: "text-green-500" },
+    { label: pt ? "Estoque Atual" : "Current Stock", value: "125.000 kg", icon: Warehouse, color: "text-cyan-500" },
+    { label: pt ? "Lucro Líquido" : "Net Profit", value: "R$5,2M", icon: TrendingUp, color: "text-emerald-500" },
+  ];
+
+  const profitTrend = [
+    { month: "Jan", revenue: 8200000, profit: 3200000 },
+    { month: "Fev", revenue: 9500000, profit: 3800000 },
+    { month: "Mar", revenue: 11200000, profit: 4500000 },
+    { month: "Abr", revenue: 13800000, profit: 5200000 },
   ];
 
   const alerts = [
@@ -84,9 +107,10 @@ const AdminDashboard = () => {
   ];
 
   const topFarmers = [
-    { name: "Pedro Oliveira", score: 95, production: "12.500 kg" },
-    { name: "Carlos Silva", score: 88, production: "8.200 kg" },
-    { name: "João Santos", score: 82, production: "4.800 kg" },
+    { name: "Pedro Oliveira", score: 97, production: "125.000 kg" },
+    { name: "Carlos Silva", score: 94, production: "98.200 kg" },
+    { name: "João Santos", score: 91, production: "84.800 kg" },
+    { name: "Rafael Costa", score: 88, production: "72.500 kg" },
   ];
 
   const statusMap: Record<string, string> = {
@@ -128,6 +152,42 @@ const AdminDashboard = () => {
             </CardContent>
           </Card>
         ))}
+      </div>
+
+      {/* Logistics & Production Summary */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <Card className="shadow-card border-border/50">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-base font-heading flex items-center gap-2"><Truck className="w-4 h-4 text-blue-500" /> {pt ? "Resumo Logístico" : "Logistics Summary"}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-3 gap-3">
+              {logisticsStats.map(s => (
+                <div key={s.label} className="text-center p-3 rounded-lg bg-muted/50">
+                  <s.icon className={`w-5 h-5 ${s.color} mx-auto mb-1`} />
+                  <p className="text-lg font-bold text-foreground">{s.value}</p>
+                  <p className="text-[10px] text-muted-foreground">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+        <Card className="shadow-card border-border/50">
+          <CardHeader className="pb-2">
+            <CardTitle className="text-base font-heading flex items-center gap-2"><Factory className="w-4 h-4 text-green-500" /> {pt ? "Resumo de Produção" : "Production Summary"}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-3 gap-3">
+              {productionStats.map(s => (
+                <div key={s.label} className="text-center p-3 rounded-lg bg-muted/50">
+                  <s.icon className={`w-5 h-5 ${s.color} mx-auto mb-1`} />
+                  <p className="text-lg font-bold text-foreground">{s.value}</p>
+                  <p className="text-[10px] text-muted-foreground">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
@@ -173,6 +233,25 @@ const AdminDashboard = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* Profit Trend */}
+      <Card className="shadow-card border-border/50">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-base font-heading">{pt ? "Receita vs Lucro (R$)" : "Revenue vs Profit (R$)"}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <ResponsiveContainer width="100%" height={220}>
+            <AreaChart data={profitTrend}>
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(210,18%,90%)" />
+              <XAxis dataKey="month" fontSize={12} />
+              <YAxis fontSize={12} tickFormatter={v => `${(v/1000000).toFixed(1)}M`} />
+              <Tooltip formatter={(v: number) => `R$${(v/1000000).toFixed(2)}M`} />
+              <Area type="monotone" dataKey="revenue" stroke="hsl(199,89%,32%)" fill="hsl(199,89%,32%)" fillOpacity={0.12} name={pt ? "Receita" : "Revenue"} />
+              <Area type="monotone" dataKey="profit" stroke="#10b981" fill="#10b981" fillOpacity={0.15} name={pt ? "Lucro" : "Profit"} />
+            </AreaChart>
+          </ResponsiveContainer>
+        </CardContent>
+      </Card>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         <Card className="shadow-card border-border/50">

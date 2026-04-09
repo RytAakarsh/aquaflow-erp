@@ -4,21 +4,21 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import {
-  Fish, Droplets, Thermometer, Activity, CheckCircle2, CloudSun
+  Fish, Droplets, Thermometer, Activity, CheckCircle2, CloudSun, DollarSign, TrendingUp, Egg
 } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, BarChart, Bar, CartesianGrid } from "recharts";
 
 const pondHealth = [
-  { pond: "A1", temp: 28.5, ph: 7.2, do2: 6.8, stock: 640, status: "Good" },
-  { pond: "A2", temp: 29.0, ph: 7.0, do2: 6.5, stock: 720, status: "Good" },
-  { pond: "B1", temp: 27.8, ph: 7.1, do2: 7.0, stock: 580, status: "Excellent" },
-  { pond: "B2", temp: 31.2, ph: 6.8, do2: 5.8, stock: 510, status: "Warning" },
-  { pond: "C1", temp: 28.2, ph: 7.3, do2: 6.9, stock: 750, status: "Good" },
+  { pond: "A1", temp: 28.5, ph: 7.2, do2: 6.8, stock: 12400, status: "Good" },
+  { pond: "A2", temp: 29.0, ph: 7.0, do2: 6.5, stock: 15200, status: "Good" },
+  { pond: "B1", temp: 27.8, ph: 7.1, do2: 7.0, stock: 11800, status: "Excellent" },
+  { pond: "B2", temp: 31.2, ph: 6.8, do2: 5.8, stock: 9500, status: "Warning" },
+  { pond: "C1", temp: 28.2, ph: 7.3, do2: 6.9, stock: 18500, status: "Good" },
 ];
 
 const weeklyFeedData = [
-  { day: "Seg", feed: 45 }, { day: "Ter", feed: 48 }, { day: "Qua", feed: 42 },
-  { day: "Qui", feed: 50 }, { day: "Sex", feed: 47 }, { day: "Sáb", feed: 52 }, { day: "Dom", feed: 44 },
+  { day: "Seg", feed: 2450 }, { day: "Ter", feed: 2680 }, { day: "Qua", feed: 2320 },
+  { day: "Qui", feed: 2750 }, { day: "Sex", feed: 2590 }, { day: "Sáb", feed: 2800 }, { day: "Dom", feed: 2400 },
 ];
 
 const growthData = [
@@ -30,6 +30,7 @@ const growthData = [
 const FarmerDashboard = () => {
   const { user } = useAuth();
   const { t, language } = useLanguage();
+  const pt = language === "pt";
 
   const statusMap: Record<string, string> = {
     Good: t("good"),
@@ -55,11 +56,13 @@ const FarmerDashboard = () => {
         </Card>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {[
-          { label: t("activePonds"), value: "5", icon: Droplets, color: "text-primary", sub: t("allHealthy") },
-          { label: t("currentStock"), value: "3.200", icon: Fish, color: "text-accent", sub: `+120 ${t("thisWeek")}` },
+          { label: t("activePonds"), value: "24", icon: Droplets, color: "text-primary", sub: t("allHealthy") },
+          { label: t("currentStock"), value: "67.400", icon: Fish, color: "text-accent", sub: `+2.800 ${t("thisWeek")}` },
+          { label: pt ? "Receita Mensal" : "Monthly Revenue", value: "R$2,8M", icon: DollarSign, color: "text-emerald-500", sub: "+18%" },
           { label: t("avgWaterTemp"), value: "28,9°C", icon: Thermometer, color: "text-warning", sub: t("withinRange") },
+          { label: pt ? "Ovos Produzidos" : "Eggs Produced", value: "485K", icon: Egg, color: "text-info", sub: pt ? "Este mês" : "This month" },
           { label: "TCA", value: "1,6", icon: Activity, color: "text-success", sub: `${t("target")}: 1,5` },
         ].map((s) => (
           <Card key={s.label} className="shadow-card border-border/50">
@@ -116,7 +119,7 @@ const FarmerDashboard = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center text-xs font-bold text-foreground">{p.pond}</div>
                   <div>
-                    <p className="text-sm font-medium text-foreground">{p.stock} {t("fish")}</p>
+                    <p className="text-sm font-medium text-foreground">{p.stock.toLocaleString("pt-BR")} {t("fish")}</p>
                     <p className="text-xs text-muted-foreground">{p.temp}°C · pH {p.ph} · DO {p.do2}</p>
                   </div>
                 </div>
@@ -177,10 +180,10 @@ const FarmerDashboard = () => {
         <CardContent>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {[
-              { label: t("performanceScore"), value: 88, color: "[&>div]:bg-primary" },
-              { label: t("feedEfficiency"), value: 85, color: "[&>div]:bg-accent" },
-              { label: t("taskCompletion"), value: 92, color: "[&>div]:bg-success" },
-              { label: t("reportAccuracy"), value: 78, color: "[&>div]:bg-warning" },
+              { label: t("performanceScore"), value: 94, color: "[&>div]:bg-primary" },
+              { label: t("feedEfficiency"), value: 91, color: "[&>div]:bg-accent" },
+              { label: t("taskCompletion"), value: 97, color: "[&>div]:bg-success" },
+              { label: t("reportAccuracy"), value: 89, color: "[&>div]:bg-warning" },
             ].map((m) => (
               <div key={m.label} className="text-center">
                 <p className="text-2xl font-bold text-foreground">{m.value}%</p>
