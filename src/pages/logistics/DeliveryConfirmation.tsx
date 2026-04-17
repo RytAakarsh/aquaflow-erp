@@ -14,9 +14,11 @@ const DeliveryConfirmation = () => {
   const pt = language === "pt";
 
   const [deliveries, setDeliveries] = useState([
-    { id: "TR-001", from: pt ? "Fazenda Silva - SP" : "Silva Farm - SP", to: pt ? "Processamento Central" : "Central Processing", item: pt ? "Peixes" : "Fish", sentQty: "1.200 kg", receivedQty: "1.195 kg", loss: "5 kg (0.4%)", status: "confirmed", notes: pt ? "Entrega em boas condições" : "Good condition delivery", confirmedAt: "2026-04-07 14:30" },
-    { id: "TR-004", from: pt ? "Reprodução - BA" : "Breeding - BA", to: pt ? "Incubatório - MG" : "Hatchery - MG", item: pt ? "Ovos" : "Eggs", sentQty: "50.000 un", receivedQty: "49.800 un", loss: "200 un (0.4%)", status: "confirmed", notes: pt ? "Alguns ovos danificados no transporte" : "Some eggs damaged in transit", confirmedAt: "2026-04-06 16:45" },
-    { id: "TR-002", from: pt ? "Incubatório - MG" : "Hatchery - MG", to: pt ? "Fazenda Santos" : "Santos Farm", item: pt ? "Alevinos" : "Fry", sentQty: "5.000 un", receivedQty: "", loss: "", status: "pending", notes: "", confirmedAt: "" },
+    { id: "TR-001", from: pt ? "Fazenda Silva - SP" : "Silva Farm - SP", to: pt ? "Processamento Central" : "Central Processing", item: pt ? "Peixes" : "Fish", sentQty: "1000 kg", receivedQty: "1000 kg", loss: "0 kg (0.%)", status: "confirmed", notes: pt ? "Entrega em boas condições" : "Good condition delivery", confirmedAt: "2026-04-07 14:30" },
+    { id: "TR-004", from: pt ? "Reprodução - BA" : "Breeding - BA", to: pt ? "Incubatório - MG" : "Hatchery - MG", item: pt ? "Ovos" : "Eggs", sentQty: "500kg", receivedQty: "500 kg", loss: "0 (0.0%)", status: "confirmed", notes: pt ? "Alguns ovos danificados no transporte" : "Good condition delivery", confirmedAt: "2026-04-06 16:45" },
+     { id: "TR-001", from: pt ? "Fazenda Silva - SP" : "Silva Farm - SP", to: pt ? "Processamento Central" : "Central Processing", item: pt ? "Peixes" : "Fish", sentQty: "1000 kg", receivedQty: "1000 kg", loss: "0 kg (0.%)", status: "confirmed", notes: pt ? "Entrega em boas condições" : "Good condition delivery", confirmedAt: "2026-04-07 14:30" },
+    { id: "TR-004", from: pt ? "Reprodução - BA" : "Breeding - BA", to: pt ? "Incubatório - MG" : "Hatchery - MG", item: pt ? "Ovos" : "Eggs", sentQty: "500kg", receivedQty: "500 kg", loss: "0 (0.0%)", status: "confirmed", notes: pt ? "Alguns ovos danificados no transporte" : "Good condition delivery", confirmedAt: "2026-04-06 16:45" },
+    { id: "TR-002", from: pt ? "Incubatório - MG" : "Hatchery - MG", to: pt ? "Fazenda Santos" : "Santos Farm", item: pt ? "Alevinos" : "Fry", sentQty: "900kg", receivedQty: "", loss: "", status: "pending", notes: "", confirmedAt: "" },
     { id: "TR-005", from: pt ? "Processamento" : "Processing", to: pt ? "Armazém Central" : "Central Warehouse", item: pt ? "Embalados" : "Packaged", sentQty: "600 kg", receivedQty: "", loss: "", status: "pending", notes: "", confirmedAt: "" },
   ]);
 

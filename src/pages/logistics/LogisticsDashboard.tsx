@@ -19,11 +19,11 @@ const LogisticsDashboard = () => {
   const pt = language === "pt";
 
   const stats = [
-    { label: pt ? "Total de Entregas" : "Total Deliveries", value: "1.560", icon: Truck, change: "+24%", color: "text-blue-500" },
-    { label: pt ? "Em Trânsito" : "In Transit", value: "42", icon: MapPin, change: pt ? "12 urgentes" : "12 urgent", color: "text-orange-500" },
-    { label: pt ? "Pendentes" : "Pending", value: "86", icon: Clock, change: pt ? "28 hoje" : "28 today", color: "text-yellow-500" },
+    { label: pt ? "Total de Entregas" : "Total Deliveries", value: "1560", icon: Truck, change: "+24%", color: "text-blue-500" },
+    { label: pt ? "Em Trânsito" : "In Transit", value: "420", icon: MapPin, change: pt ? "12 urgentes" : "12 urgent", color: "text-orange-500" },
+    { label: pt ? "Pendentes" : "Pending", value: "186", icon: Clock, change: pt ? "28 hoje" : "28 today", color: "text-yellow-500" },
     { label: pt ? "Entregues Hoje" : "Delivered Today", value: "38", icon: CheckCircle, change: "100%", color: "text-green-500" },
-    { label: pt ? "Custo de Transporte" : "Transport Cost", value: "R$2,85M", icon: DollarSign, change: "-5%", color: "text-violet-500" },
+    { label: pt ? "Custo de Transporte" : "Transport Cost", value: "R$4,85M", icon: DollarSign, change: "-5%", color: "text-violet-500" },
     { label: pt ? "Perdas/Danos" : "Losses/Damages", value: "0.2%", icon: AlertTriangle, change: pt ? "Meta: <0.5%" : "Target: <0.5%", color: "text-red-500" },
   ];
 

@@ -8,10 +8,10 @@ const DispatchTracking = () => {
   const pt = language === "pt";
 
   const dispatches = [
-    { id: "TR-002", vehicle: "VH-002", driver: "André Costa", from: pt ? "Incubatório - MG" : "Hatchery - MG", to: pt ? "Fazenda Santos" : "Santos Farm", item: pt ? "Alevinos - 5.000 un" : "Fry - 5,000 un", status: "in_transit", departed: "08:30", eta: "14:00", progress: 65 },
-    { id: "TR-005", vehicle: "VH-004", driver: "Paulo Mendes", from: pt ? "Processamento" : "Processing", to: pt ? "Armazém Central" : "Central Warehouse", item: pt ? "Embalados - 600 kg" : "Packaged - 600 kg", status: "in_transit", departed: "10:15", eta: "12:30", progress: 80 },
-    { id: "TR-007", vehicle: "VH-001", driver: "Roberto Lima", from: pt ? "Fazenda Silva - SP" : "Silva Farm - SP", to: pt ? "Processamento Central" : "Central Processing", item: pt ? "Peixes - 1.500 kg" : "Fish - 1,500 kg", status: "loading", departed: "—", eta: "16:00", progress: 10 },
-    { id: "TR-008", vehicle: "VH-003", driver: "Marcos Silva", from: pt ? "Reprodução - BA" : "Breeding - BA", to: pt ? "Incubatório - MG" : "Hatchery - MG", item: pt ? "Ovos - 30.000 un" : "Eggs - 30,000 un", status: "scheduled", departed: "—", eta: pt ? "Amanhã 07:00" : "Tomorrow 07:00", progress: 0 },
+    { id: "TR-002", vehicle: "VH-002", driver: "André Costa", from: pt ? "Incubatório - MG" : "Hatchery - MG", to: pt ? "Fazenda Santos" : "Santos Farm", item: pt ? "Alevinos - 500 kg" : "Fry - 500kg", status: "in_transit", departed: "08:30", eta: "14:00", progress: 65 },
+    { id: "TR-005", vehicle: "VH-004", driver: "Paulo Mendes", from: pt ? "Processamento" : "Processing", to: pt ? "Armazém Central" : "Central Warehouse", item: pt ? "Embalados - 600 kg" : "Fish - 600kg", status: "in_transit", departed: "10:15", eta: "12:30", progress: 80 },
+    { id: "TR-007", vehicle: "VH-001", driver: "Roberto Lima", from: pt ? "Fazenda Silva - SP" : "Silva Farm - SP", to: pt ? "Processamento Central" : "Central Processing", item: pt ? "Peixes - 1.500 kg" : "Fish - 1,500kg", status: "loading", departed: "—", eta: "16:00", progress: 10 },
+    { id: "TR-008", vehicle: "VH-003", driver: "Marcos Silva", from: pt ? "Reprodução - BA" : "Breeding - BA", to: pt ? "Incubatório - MG" : "Hatchery - MG", item: pt ? "Ovos - 1000 kg" : "Fish - 1,000kg", status: "scheduled", departed: "—", eta: pt ? "Amanhã 07:00" : "Tomorrow 07:00", progress: 0 },
   ];
 
   const statusConfig: Record<string, { label: string; color: string; icon: any }> = {

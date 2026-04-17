@@ -18,10 +18,20 @@ const VehicleManagement = () => {
   const pt = language === "pt";
 
   const [vehicles, setVehicles] = useState([
-    { id: "VH-001", name: pt ? "Caminhão Refrigerado 01" : "Refrigerated Truck 01", plate: "ABC-1234", driver: "Roberto Lima", capacity: "5.000 kg", type: pt ? "Refrigerado" : "Refrigerated", status: pt ? "Disponível" : "Available", fuel: 85 },
-    { id: "VH-002", name: pt ? "Caminhão Refrigerado 02" : "Refrigerated Truck 02", plate: "DEF-5678", driver: "André Costa", capacity: "3.000 kg", type: pt ? "Refrigerado" : "Refrigerated", status: pt ? "Em Uso" : "In Use", fuel: 62 },
-    { id: "VH-003", name: pt ? "Van de Transporte" : "Transport Van", plate: "GHI-9012", driver: "Marcos Silva", capacity: "1.500 kg", type: "Van", status: pt ? "Disponível" : "Available", fuel: 90 },
-    { id: "VH-004", name: pt ? "Caminhão Tanque" : "Tank Truck", plate: "JKL-3456", driver: "Paulo Mendes", capacity: "8.000 L", type: pt ? "Tanque" : "Tank", status: pt ? "Em Uso" : "In Use", fuel: 45 },
+    { id: "VH-001", name: pt ? "Caminhão Refrigerado 01" : "Refrigerated Truck 01", plate: "ABC-1234", driver: "Roberto Lima", capacity: "1000 kg", type: pt ? "Refrigerado" : "Refrigerated", status: pt ? "Disponível" : "Available", fuel: 85 },
+    { id: "VH-002", name: pt ? "Caminhão Refrigerado 02" : "Refrigerated Truck 02", plate: "DEF-5678", driver: "André Costa", capacity: "800 kg", type: pt ? "Refrigerado" : "Refrigerated", status: pt ? "Em Uso" : "In Use", fuel: 62 },
+    { id: "VH-003", name: pt ? "Van de Transporte" : "Transport Van", plate: "GHI-9012", driver: "Marcos Silva", capacity: "500 kg", type: "Van", status: pt ? "Disponível" : "Available", fuel: 90 },
+    { id: "VH-004", name: pt ? "Caminhão Tanque" : "Tank Truck", plate: "JKL-3456", driver: "Paulo Mendes", capacity: "800kg", type: pt ? "Tanque" : "Tank", status: pt ? "Em Uso" : "In Use", fuel: 45 },
+    { id: "VH-005", name: pt ? "Pickup Utilitária" : "Utility Pickup", plate: "MNO-7890", driver: "Lucas Ferreira", capacity: "800 kg", type: "Pickup", status: pt ? "Manutenção" : "Maintenance", fuel: 30 },
+     { id: "VH-001", name: pt ? "Caminhão Refrigerado 01" : "Refrigerated Truck 01", plate: "ABC-1234", driver: "Roberto Lima", capacity: "1000 kg", type: pt ? "Refrigerado" : "Refrigerated", status: pt ? "Disponível" : "Available", fuel: 85 },
+    { id: "VH-002", name: pt ? "Caminhão Refrigerado 02" : "Refrigerated Truck 02", plate: "DEF-5678", driver: "André Costa", capacity: "800 kg", type: pt ? "Refrigerado" : "Refrigerated", status: pt ? "Em Uso" : "In Use", fuel: 62 },
+    { id: "VH-003", name: pt ? "Van de Transporte" : "Transport Van", plate: "GHI-9012", driver: "Marcos Silva", capacity: "500 kg", type: "Van", status: pt ? "Disponível" : "Available", fuel: 90 },
+    { id: "VH-004", name: pt ? "Caminhão Tanque" : "Tank Truck", plate: "JKL-3456", driver: "Paulo Mendes", capacity: "800kg", type: pt ? "Tanque" : "Tank", status: pt ? "Em Uso" : "In Use", fuel: 45 },
+    { id: "VH-005", name: pt ? "Pickup Utilitária" : "Utility Pickup", plate: "MNO-7890", driver: "Lucas Ferreira", capacity: "800 kg", type: "Pickup", status: pt ? "Manutenção" : "Maintenance", fuel: 30 },
+     { id: "VH-001", name: pt ? "Caminhão Refrigerado 01" : "Refrigerated Truck 01", plate: "ABC-1234", driver: "Roberto Lima", capacity: "1000 kg", type: pt ? "Refrigerado" : "Refrigerated", status: pt ? "Disponível" : "Available", fuel: 85 },
+    { id: "VH-002", name: pt ? "Caminhão Refrigerado 02" : "Refrigerated Truck 02", plate: "DEF-5678", driver: "André Costa", capacity: "800 kg", type: pt ? "Refrigerado" : "Refrigerated", status: pt ? "Em Uso" : "In Use", fuel: 62 },
+    { id: "VH-003", name: pt ? "Van de Transporte" : "Transport Van", plate: "GHI-9012", driver: "Marcos Silva", capacity: "500 kg", type: "Van", status: pt ? "Disponível" : "Available", fuel: 90 },
+    { id: "VH-004", name: pt ? "Caminhão Tanque" : "Tank Truck", plate: "JKL-3456", driver: "Paulo Mendes", capacity: "800kg", type: pt ? "Tanque" : "Tank", status: pt ? "Em Uso" : "In Use", fuel: 45 },
     { id: "VH-005", name: pt ? "Pickup Utilitária" : "Utility Pickup", plate: "MNO-7890", driver: "Lucas Ferreira", capacity: "800 kg", type: "Pickup", status: pt ? "Manutenção" : "Maintenance", fuel: 30 },
   ]);
 
@@ -82,8 +92,8 @@ const VehicleManagement = () => {
 
       <div className="grid sm:grid-cols-3 gap-4">
         {[
-          { label: pt ? "Total de Veículos" : "Total Vehicles", value: vehicles.length, icon: Truck, color: "text-blue-500" },
-          { label: pt ? "Disponíveis" : "Available", value: statusData[0].value, icon: CarFront, color: "text-green-500" },
+          { label: pt ? "Total de Veículos" : "Total Vehicles", value: 40, icon: Truck, color: "text-blue-500" },
+          { label: pt ? "Disponíveis" : "Available", value: 10, icon: CarFront, color: "text-green-500" },
           { label: pt ? "Combustível Médio" : "Avg Fuel", value: `${Math.round(vehicles.reduce((a, v) => a + v.fuel, 0) / vehicles.length)}%`, icon: Fuel, color: "text-orange-500" },
         ].map((s, i) => (
           <Card key={i}><CardContent className="p-4 flex items-center gap-4">
