@@ -23,9 +23,9 @@ const StorageInventory = () => {
       </div>
 
       <div className="grid sm:grid-cols-4 gap-3">
-        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold">1.380 kg</p><p className="text-xs text-muted-foreground">{pt ? "Total em Estoque" : "Total in Stock"}</p></CardContent></Card>
+        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold">1380 kg</p><p className="text-xs text-muted-foreground">{pt ? "Total em Estoque" : "Total in Stock"}</p></CardContent></Card>
         <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold">85%</p><p className="text-xs text-muted-foreground">{pt ? "Capacidade Usada" : "Capacity Used"}</p></CardContent></Card>
-        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold">4</p><p className="text-xs text-muted-foreground">{pt ? "Tipos de Produto" : "Product Types"}</p></CardContent></Card>
+        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold">9</p><p className="text-xs text-muted-foreground">{pt ? "Tipos de Produto" : "Product Types"}</p></CardContent></Card>
         <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-orange-500">1</p><p className="text-xs text-muted-foreground">{pt ? "Alertas de Validade" : "Expiry Alerts"}</p></CardContent></Card>
       </div>
 

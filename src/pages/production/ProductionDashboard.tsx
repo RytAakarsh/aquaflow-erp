@@ -19,12 +19,12 @@ const ProductionDashboard = () => {
   const pt = language === "pt";
 
   const stats = [
-    { label: pt ? "Recebimento Hoje" : "Today's Intake", value: "45.800 kg", icon: PackageOpen, change: "+18%", color: "text-blue-500" },
-    { label: pt ? "Em Processamento" : "Processing", value: "38.500 kg", icon: Scissors, change: "12 lotes", color: "text-orange-500" },
-    { label: pt ? "Embalados" : "Packaged", value: "28.600 kg", icon: Package, change: pt ? "14.300 pacotes" : "14,300 packs", color: "text-green-500" },
-    { label: pt ? "Em Estoque" : "In Storage", value: "125.000 kg", icon: Warehouse, change: pt ? "78% capacidade" : "78% capacity", color: "text-violet-500" },
-    { label: pt ? "Vendas do Mês" : "Month Sales", value: "R$13,8M", icon: DollarSign, change: "+22%", color: "text-emerald-500" },
-    { label: pt ? "Lucro Líquido" : "Net Profit", value: "R$5,2M", icon: TrendingUp, change: "+18%", color: "text-cyan-500" },
+    { label: pt ? "Recebimento Hoje" : "Today's Intake", value: "1200 kg", icon: PackageOpen, change: "+18%", color: "text-blue-500" },
+    { label: pt ? "Em Processamento" : "Processing", value: "950 kg", icon: Scissors, change: "12 lotes", color: "text-orange-500" },
+    { label: pt ? "Embalados" : "Packaged", value: "600 kg", icon: Package, change: pt ? "14.300 pacotes" : "14,300 packs", color: "text-green-500" },
+    { label: pt ? "Em Estoque" : "In Storage", value: "525 kg", icon: Warehouse, change: pt ? "78% capacidade" : "78% capacity", color: "text-violet-500" },
+    { label: pt ? "Vendas do Mês" : "Month Sales", value: "R$9,500,000", icon: DollarSign, change: "+22%", color: "text-emerald-500" },
+    { label: pt ? "Lucro Líquido" : "Net Profit", value: "R$50,600,000", icon: TrendingUp, change: "+18%", color: "text-cyan-500" },
   ];
 
   const weeklyProcessing = [
@@ -50,10 +50,10 @@ const ProductionDashboard = () => {
   ];
 
   const recentBatches = [
-    { id: "PB-601", source: "Carlos Silva - SP", qty: "8.500 kg", grade: "A", product: pt ? "Filé Premium" : "Premium Fillet", output: "5.525 kg", yield: "65%", status: pt ? "Concluído" : "Completed", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia" },
-    { id: "PB-602", source: "João Santos - MG", qty: "6.200 kg", grade: "A+", product: pt ? "Tilápia Inteira" : "Whole Tilapia", output: "5.580 kg", yield: "90%", status: pt ? "Concluído" : "Completed", fishType: pt ? "Tilápia GIFT" : "GIFT Tilapia" },
-    { id: "PB-603", source: "Pedro Oliveira - GO", qty: "12.000 kg", grade: "B", product: pt ? "Filé / Congelado" : "Fillet / Frozen", output: "—", yield: "—", status: pt ? "Processando" : "Processing", fishType: "Tambaqui" },
-    { id: "PB-604", source: "Rafael Costa - BA", qty: "5.800 kg", grade: "—", product: "—", output: "—", yield: "—", status: pt ? "Recebido" : "Received", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia" },
+    { id: "PB-601", source: "Carlos Silva - SP", qty: "850 kg", grade: "A", product: pt ? "Filé Premium" : "Premium Fillet", output: "725 kg", yield: "65%", status: pt ? "Concluído" : "Completed", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia" },
+    { id: "PB-602", source: "João Santos - MG", qty: "620 kg", grade: "A+", product: pt ? "Tilápia Inteira" : "Whole Tilapia", output: "550 kg", yield: "90%", status: pt ? "Concluído" : "Completed", fishType: pt ? "Tilápia GIFT" : "GIFT Tilapia" },
+    { id: "PB-603", source: "Pedro Oliveira - GO", qty: "1000 kg", grade: "B", product: pt ? "Filé / Congelado" : "Fillet / Frozen", output: "—", yield: "—", status: pt ? "Processando" : "Processing", fishType: "Tambaqui" },
+    { id: "PB-604", source: "Rafael Costa - BA", qty: "500 kg", grade: "—", product: "—", output: "—", yield: "—", status: pt ? "Recebido" : "Received", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia" },
   ];
 
   const statusColor = (s: string) => {

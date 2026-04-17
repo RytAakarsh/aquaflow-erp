@@ -15,12 +15,12 @@ const SalesPanel = () => {
   const pt = language === "pt";
 
   const [sales, setSales] = useState([
-    { id: "SL-001", customer: "Rede Atacadão - Nacional", product: pt ? "Filé Premium 1kg" : "Premium Fillet 1kg", qty: "12.000 un", unitPrice: "R$48,00", total: "R$576.000", date: "2026-04-08", status: pt ? "Pago" : "Paid" },
-    { id: "SL-002", customer: "Carrefour Brasil - SP/RJ", product: pt ? "Tilápia Inteira 1kg" : "Whole Tilapia 1kg", qty: "8.500 un", unitPrice: "R$32,00", total: "R$272.000", date: "2026-04-07", status: pt ? "Pago" : "Paid" },
-    { id: "SL-003", customer: "Frigorífico JBS Aqua - MG", product: pt ? "Congelado 2kg" : "Frozen Pack 2kg", qty: "5.000 un", unitPrice: "R$89,00", total: "R$445.000", date: "2026-04-07", status: pt ? "Pendente" : "Pending" },
-    { id: "SL-004", customer: "Pão de Açúcar - Nacional", product: pt ? "Filé Premium 500g" : "Premium Fillet 500g", qty: "25.000 un", unitPrice: "R$28,00", total: "R$700.000", date: "2026-04-06", status: pt ? "Pago" : "Paid" },
-    { id: "SL-005", customer: "BRF S.A. - Exportação", product: pt ? "Filé Congelado 2kg" : "Frozen Fillet 2kg", qty: "15.000 un", unitPrice: "R$89,00", total: "R$1.335.000", date: "2026-04-05", status: pt ? "Pago" : "Paid" },
-    { id: "SL-006", customer: "Restaurante Fasano - SP", product: pt ? "Filé Premium 1kg" : "Premium Fillet 1kg", qty: "2.000 un", unitPrice: "R$65,00", total: "R$130.000", date: "2026-04-05", status: pt ? "Pago" : "Paid" },
+    { id: "SL-001", customer: "Rede Atacadão - Nacional", product: pt ? "Filé Premium 1kg" : "Premium Fillet 1kg", qty: "1200 un", unitPrice: "R$48,00", total: "R$576,000", date: "2026-04-08", status: pt ? "Pago" : "Paid" },
+    { id: "SL-002", customer: "Carrefour Brasil - SP/RJ", product: pt ? "Tilápia Inteira 1kg" : "Whole Tilapia 1kg", qty: "850 un", unitPrice: "R$32,00", total: "R$272,000", date: "2026-04-07", status: pt ? "Pago" : "Paid" },
+    { id: "SL-003", customer: "Frigorífico JBS Aqua - MG", product: pt ? "Congelado 2kg" : "Frozen Pack 2kg", qty: "500 un", unitPrice: "R$89,00", total: "R$445,000", date: "2026-04-07", status: pt ? "Pendente" : "Pending" },
+    { id: "SL-004", customer: "Pão de Açúcar - Nacional", product: pt ? "Filé Premium 500g" : "Premium Fillet 500g", qty: "25000 un", unitPrice: "R$28,00", total: "R$700,000", date: "2026-04-06", status: pt ? "Pago" : "Paid" },
+    { id: "SL-005", customer: "BRF S.A. - Exportação", product: pt ? "Filé Congelado 2kg" : "Frozen Fillet 2kg", qty: "15000 un", unitPrice: "R$89,00", total: "R$1,335,000", date: "2026-04-05", status: pt ? "Pago" : "Paid" },
+    { id: "SL-006", customer: "Restaurante Fasano - SP", product: pt ? "Filé Premium 1kg" : "Premium Fillet 1kg", qty: "2000 un", unitPrice: "R$65,00", total: "R$130,000", date: "2026-04-05", status: pt ? "Pago" : "Paid" },
   ]);
 
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -76,7 +76,7 @@ const SalesPanel = () => {
       </div>
 
       <div className="grid sm:grid-cols-3 gap-3">
-        <Card><CardContent className="p-4 flex items-center gap-3"><DollarSign className="w-6 h-6 text-green-500" /><div><p className="text-xl font-bold">R$3,46M</p><p className="text-xs text-muted-foreground">{pt ? "Total de Vendas" : "Total Sales"}</p></div></CardContent></Card>
+        <Card><CardContent className="p-4 flex items-center gap-3"><DollarSign className="w-6 h-6 text-green-500" /><div><p className="text-xl font-bold">R$30,400,000</p><p className="text-xs text-muted-foreground">{pt ? "Total de Vendas" : "Total Sales"}</p></div></CardContent></Card>
         <Card><CardContent className="p-4 text-center"><p className="text-xl font-bold">{sales.length}</p><p className="text-xs text-muted-foreground">{pt ? "Pedidos" : "Orders"}</p></CardContent></Card>
         <Card><CardContent className="p-4 text-center"><p className="text-xl font-bold">6</p><p className="text-xs text-muted-foreground">{pt ? "Clientes Corporativos" : "Corporate Clients"}</p></CardContent></Card>
       </div>

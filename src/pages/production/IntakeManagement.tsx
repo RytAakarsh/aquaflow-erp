@@ -15,12 +15,19 @@ const IntakeManagement = () => {
   const pt = language === "pt";
 
   const [intakes, setIntakes] = useState([
-    { id: "INT-001", batchId: "PB-601", source: "Carlos Silva - São Paulo", qty: "8.500 kg", grade: "A", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia", receivedAt: "2026-04-07 08:30", transportId: "TR-001", status: pt ? "Processando" : "Processing" },
-    { id: "INT-002", batchId: "PB-602", source: "João Santos - Minas Gerais", qty: "6.200 kg", grade: "A+", fishType: pt ? "Tilápia GIFT" : "GIFT Tilapia", receivedAt: "2026-04-07 10:15", transportId: "TR-006", status: pt ? "Concluído" : "Completed" },
-    { id: "INT-003", batchId: "PB-603", source: "Pedro Oliveira - Goiás", qty: "12.000 kg", grade: "B", fishType: "Tambaqui", receivedAt: "2026-04-08 07:45", transportId: "TR-003", status: pt ? "QC Pendente" : "QC Pending" },
-    { id: "INT-004", batchId: "PB-604", source: "Rafael Costa - Bahia", qty: "5.800 kg", grade: "—", fishType: "Pintado", receivedAt: "2026-04-08 11:00", transportId: "TR-008", status: pt ? "Recebido" : "Received" },
-    { id: "INT-005", batchId: "PB-605", source: "Marcos Lima - Paraná", qty: "9.400 kg", grade: "A", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia", receivedAt: "2026-04-08 14:30", transportId: "TR-012", status: pt ? "Processando" : "Processing" },
+    { id: "INT-001", batchId: "PB-601", source: "Carlos Silva - São Paulo", qty: "850 kg", grade: "A", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia", receivedAt: "2026-04-07 08:30", transportId: "TR-001", status: pt ? "Processando" : "Processing" },
+    { id: "INT-002", batchId: "PB-602", source: "João Santos - Minas Gerais", qty: "620 kg", grade: "A+", fishType: pt ? "Tilápia GIFT" : "GIFT Tilapia", receivedAt: "2026-04-07 10:15", transportId: "TR-006", status: pt ? "Concluído" : "Completed" },
+    { id: "INT-003", batchId: "PB-603", source: "Pedro Oliveira - Goiás", qty: "1200 kg", grade: "B", fishType: "Tambaqui", receivedAt: "2026-04-08 07:45", transportId: "TR-003", status: pt ? "QC Pendente" : "QC Pending" },
+    { id: "INT-004", batchId: "PB-604", source: "Rafael Costa - Bahia", qty: "580 kg", grade: "—", fishType: "Pintado", receivedAt: "2026-04-08 11:00", transportId: "TR-008", status: pt ? "Recebido" : "Received" },
+    { id: "INT-005", batchId: "PB-605", source: "Marcos Lima - Paraná", qty: "940 kg", grade: "A", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia", receivedAt: "2026-04-08 14:30", transportId: "TR-012", status: pt ? "Processando" : "Processing" },
+     { id: "INT-003", batchId: "PB-603", source: "Pedro Oliveira - Goiás", qty: "1200 kg", grade: "B", fishType: "Tambaqui", receivedAt: "2026-04-08 07:45", transportId: "TR-003", status: pt ? "QC Pendente" : "QC Pending" },
+    { id: "INT-004", batchId: "PB-604", source: "Rafael Costa - Bahia", qty: "580 kg", grade: "—", fishType: "Pintado", receivedAt: "2026-04-08 11:00", transportId: "TR-008", status: pt ? "Recebido" : "Received" },
+     { id: "INT-001", batchId: "PB-601", source: "Carlos Silva - São Paulo", qty: "850 kg", grade: "A", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia", receivedAt: "2026-04-07 08:30", transportId: "TR-001", status: pt ? "Processando" : "Processing" },
+    { id: "INT-002", batchId: "PB-602", source: "João Santos - Minas Gerais", qty: "620 kg", grade: "A+", fishType: pt ? "Tilápia GIFT" : "GIFT Tilapia", receivedAt: "2026-04-07 10:15", transportId: "TR-006", status: pt ? "Concluído" : "Completed" },
+   
+    { id: "INT-005", batchId: "PB-605", source: "Marcos Lima - Paraná", qty: "940 kg", grade: "A", fishType: pt ? "Tilápia Nilo" : "Nile Tilapia", receivedAt: "2026-04-08 14:30", transportId: "TR-012", status: pt ? "Processando" : "Processing" },
   ]);
+
 
   const [dialogOpen, setDialogOpen] = useState(false);
   const [form, setForm] = useState({ source: "", qty: "", grade: "A", transportId: "", fishType: "Tilápia Nilo" });
@@ -92,8 +99,8 @@ const IntakeManagement = () => {
       </div>
 
       <div className="grid sm:grid-cols-4 gap-3">
-        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">{intakes.length}</p><p className="text-xs text-muted-foreground">{pt ? "Total de Lotes" : "Total Batches"}</p></CardContent></Card>
-        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">41.900 kg</p><p className="text-xs text-muted-foreground">{pt ? "Total Recebido" : "Total Received"}</p></CardContent></Card>
+        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">20</p><p className="text-xs text-muted-foreground">{pt ? "Total de Lotes" : "Total Batches"}</p></CardContent></Card>
+        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">9,900 kg</p><p className="text-xs text-muted-foreground">{pt ? "Total Recebido" : "Total Received"}</p></CardContent></Card>
         <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">A</p><p className="text-xs text-muted-foreground">{pt ? "Classe Média" : "Avg Grade"}</p></CardContent></Card>
         <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-foreground">5</p><p className="text-xs text-muted-foreground">{pt ? "Fazendas" : "Farms"}</p></CardContent></Card>
       </div>

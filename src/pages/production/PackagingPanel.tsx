@@ -37,10 +37,10 @@ const PackagingPanel = () => {
   const pt = language === "pt";
 
   const [packages, setPackages] = useState([
-    { id: "PKG-001", batchId: "PB-601", product: pt ? "Filé Premium" : "Premium Fillet", size: "1kg", packs: 5520, pricePerPack: 48, totalKg: "5.520 kg", lotPrice: "R$264.960", status: pt ? "Concluído" : "Completed", date: "2026-04-07", barcode: "7891234560012" },
-    { id: "PKG-002", batchId: "PB-602", product: pt ? "Tilápia Inteira" : "Whole Tilapia", size: "1kg", packs: 5400, pricePerPack: 32, totalKg: "5.400 kg", lotPrice: "R$172.800", status: pt ? "Concluído" : "Completed", date: "2026-04-07", barcode: "7891234560029" },
-    { id: "PKG-003", batchId: "PB-603", product: pt ? "Filé Congelado" : "Frozen Fillet", size: "2kg", packs: 3000, pricePerPack: 89, totalKg: "6.000 kg", lotPrice: "R$267.000", status: pt ? "Concluído" : "Completed", date: "2026-04-07", barcode: "7891234560036" },
-    { id: "PKG-004", batchId: "PB-605", product: pt ? "Filé Premium" : "Premium Fillet", size: "500g", packs: 0, pricePerPack: 28, totalKg: "—", lotPrice: "—", status: pt ? "Aguardando" : "Waiting", date: "2026-04-08", barcode: "7891234560043" },
+    { id: "PKG-001", batchId: "PB-601", product: pt ? "Filé Premium" : "Premium Fillet", size: "1000kg", packs: 5520, pricePerPack: 208, totalKg: "5520 kg", lotPrice: "R$264,960", status: pt ? "Concluído" : "Completed", date: "2026-04-07", barcode: "7891234560012" },
+    { id: "PKG-002", batchId: "PB-602", product: pt ? "Tilápia Inteira" : "Whole Tilapia", size: "1000kg", packs: 5400, pricePerPack: 320, totalKg: "5400 kg", lotPrice: "R$172,800", status: pt ? "Concluído" : "Completed", date: "2026-04-07", barcode: "7891234560029" },
+    { id: "PKG-003", batchId: "PB-603", product: pt ? "Filé Congelado" : "Frozen Fillet", size: "2000kg", packs: 3000, pricePerPack: 500, totalKg: "6000 kg", lotPrice: "R$267,000", status: pt ? "Concluído" : "Completed", date: "2026-04-07", barcode: "7891234560036" },
+    { id: "PKG-004", batchId: "PB-605", product: pt ? "Filé Premium" : "Premium Fillet", size: "500kg", packs: 0, pricePerPack: 280, totalKg: "—", lotPrice: "—", status: pt ? "Aguardando" : "Waiting", date: "2026-04-08", barcode: "7891234560043" },
   ]);
 
   const [dialogOpen, setDialogOpen] = useState(false);
