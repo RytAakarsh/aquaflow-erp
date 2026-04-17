@@ -30,11 +30,11 @@ const COLORS = ["hsl(199,89%,32%)", "hsl(168,60%,42%)", "hsl(38,92%,50%)", "hsl(
 
 // ============ BREEDING ============
 const broodstockData = [
-  { id: "BS-001", strain: "GIFT Tilápia", age_en: "18 months", age_pt: "18 meses", weight: "1,2 kg", status_en: "Breeding", status_pt: "Reprodução", eggs: 2400 },
-  { id: "BS-002", strain: "Tilápia do Nilo", age_en: "24 months", age_pt: "24 meses", weight: "1,5 kg", status_en: "Resting", status_pt: "Descanso", eggs: 0 },
-  { id: "BS-003", strain: "GIFT Tilápia", age_en: "20 months", age_pt: "20 meses", weight: "1,3 kg", status_en: "Breeding", status_pt: "Reprodução", eggs: 1800 },
-  { id: "BS-004", strain: "Tilápia Vermelha", age_en: "16 months", age_pt: "16 meses", weight: "1,1 kg", status_en: "Conditioning", status_pt: "Condicionamento", eggs: 0 },
-  { id: "BS-005", strain: "Tilápia do Nilo", age_en: "22 months", age_pt: "22 meses", weight: "1,4 kg", status_en: "Breeding", status_pt: "Reprodução", eggs: 3200 },
+  { id: "BS-001", strain: "GIFT Tilápia", age_en: "18 months", age_pt: "18 meses", weight: "1200 kg", status_en: "Breeding", status_pt: "Reprodução", eggs: 2400 },
+  { id: "BS-002", strain: "Tilápia do Nilo", age_en: "24 months", age_pt: "24 meses", weight: "1500 kg", status_en: "Resting", status_pt: "Descanso", eggs: 0 },
+  { id: "BS-003", strain: "GIFT Tilápia", age_en: "20 months", age_pt: "20 meses", weight: "1300 kg", status_en: "Breeding", status_pt: "Reprodução", eggs: 1800 },
+  { id: "BS-004", strain: "Tilápia Vermelha", age_en: "16 months", age_pt: "16 meses", weight: "1100 kg", status_en: "Conditioning", status_pt: "Condicionamento", eggs: 0 },
+  { id: "BS-005", strain: "Tilápia do Nilo", age_en: "22 months", age_pt: "22 meses", weight: "1400 kg", status_en: "Breeding", status_pt: "Reprodução", eggs: 3200 },
 ];
 
 const eggProductionMonthly = [
@@ -49,8 +49,8 @@ const eggProductionMonthly = [
 export const Breeding = () => {
   const { t, language } = useLanguage();
   const breedingStats = [
-    { label: t("activeBroodstock"), value: "48", icon: Fish, color: "text-primary", change: "+5" },
-    { label: t("eggsThisMonth"), value: "28.500", icon: Egg, color: "text-accent", change: "+9,6%" },
+    { label: t("activeBroodstock"), value: "480", icon: Fish, color: "text-primary", change: "+5" },
+    { label: t("eggsThisMonth"), value: "2,500,000", icon: Egg, color: "text-accent", change: "+9,6%" },
     { label: t("avgHatchRate"), value: "89%", icon: Target, color: "text-success", change: "+2%" },
     { label: t("nextSpawnCycle"), value: `3 ${t("days")}`, icon: Calendar, color: "text-warning", change: "" },
   ];
@@ -170,8 +170,8 @@ export const Hatchery = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: t("activeTanks"), value: "12", icon: Droplets, color: "text-primary" },
-          { label: t("totalLarvae"), value: "51.500", icon: Bug, color: "text-accent" },
+          { label: t("activeTanks"), value: "270", icon: Droplets, color: "text-primary" },
+          { label: t("totalLarvae"), value: "5,500,000", icon: Bug, color: "text-accent" },
           { label: t("avgSurvival"), value: "90%", icon: Shield, color: "text-success" },
           { label: t("avgTemp"), value: "28,3°C", icon: Thermometer, color: "text-warning" },
         ].map((s) => (
@@ -283,8 +283,8 @@ export const Nursery = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: t("activeBatches"), value: "5", icon: Waves, color: "text-primary" },
-          { label: t("totalFry"), value: "46.100", icon: Fish, color: "text-accent" },
+          { label: t("activeBatches"), value: "500", icon: Waves, color: "text-primary" },
+          { label: t("totalFry"), value: "4,600,000kg", icon: Fish, color: "text-accent" },
           { label: t("avgGrowth"), value: "+12,6%", icon: TrendingUp, color: "text-success" },
           { label: t("readyToTransfer"), value: "2", icon: ArrowUpRight, color: "text-info" },
         ].map((s) => (
@@ -395,7 +395,7 @@ export const Processing = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: t("todaysIntake"), value: "1.100 kg", icon: Scale, color: "text-primary" },
+          { label: t("todaysIntake"), value: "4,100 kg", icon: Scale, color: "text-primary" },
           { label: t("outputProducts"), value: "830 kg", icon: Package, color: "text-accent" },
           { label: t("yieldRate"), value: "75,5%", icon: Target, color: "text-success" },
           { label: t("waste"), value: "105 kg", icon: Scissors, color: "text-destructive" },
@@ -622,10 +622,10 @@ export const Finance = () => {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: t("monthlyRevenue"), value: "R$138K", icon: TrendingUp, color: "text-success", change: "+10,4%" },
-          { label: t("monthlyExpenses"), value: "R$72K", icon: TrendingDown, color: "text-destructive", change: "+2,9%" },
-          { label: t("netProfit"), value: "R$66K", icon: DollarSign, color: "text-primary", change: "+20%" },
-          { label: t("farmerPayments"), value: "R$31K", icon: Zap, color: "text-warning", change: `${t("pending")}: 2` },
+          { label: t("monthlyRevenue"), value: "R$9,890,000", icon: TrendingUp, color: "text-success", change: "+10,4%" },
+          { label: t("monthlyExpenses"), value: "R$72,000", icon: TrendingDown, color: "text-destructive", change: "+2,9%" },
+          { label: t("netProfit"), value: "R$6,400,000", icon: DollarSign, color: "text-primary", change: "+20%" },
+          { label: t("farmerPayments"), value: "R$1,900,000", icon: Zap, color: "text-warning", change: `${t("pending")}: 2` },
         ].map((s) => (
           <Card key={s.label} className="shadow-card border-border/50">
             <CardContent className="p-5">

@@ -27,11 +27,11 @@ const AdminBreedingOverview = () => {
   const activeCycles = breedingCycles.filter(c => c.status === "Active").length;
 
   const stats = [
-    { label: pt ? "Total Reprodutores" : "Total Broodstock", value: broodstock.length, icon: Fish, color: "text-primary", sub: `${broodstock.filter(b => b.gender === "Male").length}M / ${broodstock.filter(b => b.gender === "Female").length}F` },
-    { label: pt ? "Grupos Ativos" : "Active Groups", value: breedingGroups.filter(g => g.status === "Active").length, icon: Users, color: "text-accent", sub: `${breedingGroups.length} ${pt ? "total" : "total"}` },
-    { label: pt ? "Ciclos Ativos" : "Active Cycles", value: activeCycles, icon: Activity, color: "text-info", sub: `${breedingCycles.length} ${pt ? "total" : "total"}` },
-    { label: pt ? "Total Ovos Produzidos" : "Total Eggs Produced", value: `${(totalEggs/1000).toFixed(0)}K`, icon: Egg, color: "text-warning", sub: `${avgFertility}% ${pt ? "fertilidade" : "fertility"}` },
-    { label: pt ? "Lotes Ativos" : "Active Batches", value: eggBatches.filter(b => b.status !== "Rejected").length, icon: CheckCircle2, color: "text-success", sub: `${eggBatches.filter(b => b.status === "Pending").length} ${pt ? "pendentes" : "pending"}` },
+    { label: pt ? "Total Reprodutores" : "Total Broodstock", value: 600, icon: Fish, color: "text-primary", sub: `${broodstock.filter(b => b.gender === "Male").length}M / ${broodstock.filter(b => b.gender === "Female").length}F` },
+    { label: pt ? "Grupos Ativos" : "Active Groups", value: 560, icon: Users, color: "text-accent", sub: `${breedingGroups.length} ${pt ? "total" : "80"}` },
+    { label: pt ? "Ciclos Ativos" : "Active Cycles", value: 300, icon: Activity, color: "text-info", sub: `${breedingCycles.length} ${pt ? "total" : "70"}` },
+    { label: pt ? "Total Ovos Produzidos" : "Total Eggs Produced", value: 289000, icon: Egg, color: "text-warning", sub: `${avgFertility}% ${pt ? "fertilidade" : "fertility"}` },
+    { label: pt ? "Lotes Ativos" : "Active Batches", value: 560, icon: CheckCircle2, color: "text-success", sub: `${eggBatches.filter(b => b.status === "Pending").length} ${pt ? "pendentes" : "pending"}` },
     { label: pt ? "Transferências" : "Transfers", value: hatcheryTransfers.length, icon: Truck, color: "text-primary", sub: `${hatcheryTransfers.reduce((a,t) => a+t.quantity, 0).toLocaleString()} ${pt ? "ovos" : "eggs"}` },
   ];
 

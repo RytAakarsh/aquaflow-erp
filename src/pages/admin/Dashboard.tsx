@@ -62,25 +62,25 @@ const AdminDashboard = () => {
 
   const stats = [
     { label: t("activeBatches"), value: "248", change: "+18", trend: "up", icon: Fish, color: "text-primary" },
-    { label: t("eggsThisMonth"), value: "2.85M", change: "+12,6%", trend: "up", icon: Egg, color: "text-accent" },
+    { label: t("eggsThisMonth"), value: "2,850,000", change: "+12,6%", trend: "up", icon: Egg, color: "text-accent" },
     { label: t("activeFarmers"), value: "186", change: "+14", trend: "up", icon: Users, color: "text-info" },
-    { label: t("processingToday"), value: "45.800 kg", change: "+22%", trend: "up", icon: Factory, color: "text-warning" },
+    { label: t("processingToday"), value: "4800 kg", change: "+22%", trend: "up", icon: Factory, color: "text-warning" },
     { label: t("avgSurvivalRate"), value: "94.2%", change: "+3.1%", trend: "up", icon: Target, color: "text-success" },
-    { label: t("revenueMTD"), value: "R$13,8M", change: "+18,4%", trend: "up", icon: TrendingUp, color: "text-primary" },
+    { label: t("revenueMTD"), value: "R$13,800,000", change: "+18,4%", trend: "up", icon: TrendingUp, color: "text-primary" },
   ];
 
   // Logistics Summary
   const logisticsStats = [
-    { label: pt ? "Entregas Este Mês" : "Deliveries This Month", value: "1.560", icon: Truck, color: "text-blue-500" },
+    { label: pt ? "Entregas Este Mês" : "Deliveries This Month", value: "560", icon: Truck, color: "text-blue-500" },
     { label: pt ? "Em Trânsito" : "In Transit", value: "42", icon: Truck, color: "text-orange-500" },
-    { label: pt ? "Custo Logístico" : "Logistics Cost", value: "R$2,85M", icon: DollarSign, color: "text-violet-500" },
+    { label: pt ? "Custo Logístico" : "Logistics Cost", value: "R$285,000", icon: DollarSign, color: "text-violet-500" },
   ];
 
   // Production Summary
   const productionStats = [
-    { label: pt ? "Produção do Mês" : "Month Production", value: "385.000 kg", icon: Factory, color: "text-green-500" },
-    { label: pt ? "Estoque Atual" : "Current Stock", value: "125.000 kg", icon: Warehouse, color: "text-cyan-500" },
-    { label: pt ? "Lucro Líquido" : "Net Profit", value: "R$5,2M", icon: TrendingUp, color: "text-emerald-500" },
+    { label: pt ? "Produção do Mês" : "Month Production", value: "8,000 kg", icon: Factory, color: "text-green-500" },
+    { label: pt ? "Estoque Atual" : "Current Stock", value: "5,000 kg", icon: Warehouse, color: "text-cyan-500" },
+    { label: pt ? "Lucro Líquido" : "Net Profit", value: "R$5,260,000", icon: TrendingUp, color: "text-emerald-500" },
   ];
 
   const profitTrend = [
