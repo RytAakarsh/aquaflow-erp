@@ -58,8 +58,8 @@ const FarmerDashboard = () => {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {[
-          { label: t("activePonds"), value: "24", icon: Droplets, color: "text-primary", sub: t("allHealthy") },
-          { label: t("currentStock"), value: "67.400", icon: Fish, color: "text-accent", sub: `+2.800 ${t("thisWeek")}` },
+          { label: t("activePonds"), value: "240", icon: Droplets, color: "text-primary", sub: t("allHealthy") },
+          { label: t("currentStock"), value: "670kg", icon: Fish, color: "text-accent", sub: `+2.800 ${t("thisWeek")}` },
           { label: pt ? "Receita Mensal" : "Monthly Revenue", value: "R$2,8M", icon: DollarSign, color: "text-emerald-500", sub: "+18%" },
           { label: t("avgWaterTemp"), value: "28,9°C", icon: Thermometer, color: "text-warning", sub: t("withinRange") },
           { label: pt ? "Ovos Produzidos" : "Eggs Produced", value: "485K", icon: Egg, color: "text-info", sub: pt ? "Este mês" : "This month" },

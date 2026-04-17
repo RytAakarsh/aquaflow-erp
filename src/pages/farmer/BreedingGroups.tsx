@@ -174,12 +174,12 @@ const BreedingGroups = () => {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {[
-          { label: pt ? "Total Grupos" : "Total Groups", value: myGroups.length || 4, color: "text-primary", icon: Users },
-          { label: pt ? "Ciclos Ativos" : "Active Cycles", value: myCycles.filter(c => c.status === "Active").length || 3, color: "text-accent", icon: Activity },
-          { label: pt ? "Total Machos" : "Total Males", value: totalMales || 200, color: "text-info", icon: Fish },
-          { label: pt ? "Total Fêmeas" : "Total Females", value: totalFemales || 600, color: "text-pink-500", icon: Fish },
-          { label: pt ? "Total Ovos" : "Total Eggs", value: totalEggs > 0 ? `${(totalEggs / 1000).toFixed(0)}K` : "135K", color: "text-warning", icon: Egg },
-          { label: pt ? "Fertilidade Média" : "Avg Fertility", value: `${myCycles.filter(c => c.fertilityPercent > 0).length > 0 ? Math.round(myCycles.filter(c => c.fertilityPercent > 0).reduce((a, c) => a + c.fertilityPercent, 0) / myCycles.filter(c => c.fertilityPercent > 0).length) : 90}%`, color: "text-success", icon: TrendingUp },
+          { label: pt ? "Total Grupos" : "Total Groups", value: 520, color: "text-primary", icon: Users },
+          { label: pt ? "Ciclos Ativos" : "Active Cycles", value: 480, color: "text-accent", icon: Activity },
+          { label: pt ? "Total Machos" : "Total Males", value: 240, color: "text-info", icon: Fish },
+          { label: pt ? "Total Fêmeas" : "Total Females", value: 240, color: "text-pink-500", icon: Fish },
+          { label: pt ? "Total Ovos" : "Total Eggs", value: "4,35,689", color: "text-warning", icon: Egg },
+          { label: pt ? "Fertilidade Média" : "Avg Fertility", value: "90%", color: "text-success", icon: TrendingUp },
         ].map(s => (
           <Card key={s.label} className="shadow-card border-border/50">
             <CardContent className="p-4">

@@ -126,10 +126,10 @@ const EggBatchManagement = () => {
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         {[
-          { label: pt ? "Total Lotes" : "Total Batches", value: myBatches.length, color: "text-primary" },
-          { label: pt ? "Pendentes" : "Pending", value: myBatches.filter(b => b.status === "Pending").length, color: "text-warning" },
-          { label: pt ? "Aprovados" : "Approved", value: myBatches.filter(b => b.status === "Approved").length, color: "text-success" },
-          { label: pt ? "Transferidos" : "Transferred", value: myBatches.filter(b => b.status === "Transferred").length, color: "text-info" },
+          { label: pt ? "Total Lotes" : "Total Batches", value: 470, color: "text-primary" },
+          { label: pt ? "Pendentes" : "Pending", value: 120, color: "text-warning" },
+          { label: pt ? "Aprovados" : "Approved", value: 250, color: "text-success" },
+          { label: pt ? "Transferidos" : "Transferred", value: 100, color: "text-info" },
         ].map(s => (
           <Card key={s.label} className="shadow-card border-border/50">
             <CardContent className="p-4">

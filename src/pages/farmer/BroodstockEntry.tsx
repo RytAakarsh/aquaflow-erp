@@ -177,11 +177,11 @@ const BroodstockEntry = () => {
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {[
-          { label: pt ? "Total Reprodutores" : "Total Broodstock", value: myStock.length || 4, icon: Fish, color: "text-primary" },
-          { label: pt ? "Machos" : "Males", value: myStock.filter(b => b.gender === "Male").length || 2, icon: Shield, color: "text-info" },
-          { label: pt ? "Fêmeas" : "Females", value: myStock.filter(b => b.gender === "Female").length || 2, icon: Heart, color: "text-accent" },
-          { label: pt ? "Saudáveis" : "Healthy", value: myStock.filter(b => b.healthStatus === "Healthy").length || 3, icon: Shield, color: "text-success" },
-          { label: pt ? "Peso Total" : "Total Weight", value: `${(totalWeight || 5.2).toFixed(1)} kg`, icon: Activity, color: "text-warning" },
+          { label: pt ? "Total Reprodutores" : "Total Broodstock", value: 800, icon: Fish, color: "text-primary" },
+          { label: pt ? "Machos" : "Males", value: 400 , icon: Shield, color: "text-info" },
+          { label: pt ? "Fêmeas" : "Females", value: 400, icon: Heart, color: "text-accent" },
+          { label: pt ? "Saudáveis" : "Healthy", value: 900, icon: Shield, color: "text-success" },
+          { label: pt ? "Peso Total" : "Total Weight", value: `${680} kg`, icon: Activity, color: "text-warning" },
           { label: pt ? "Idade Média" : "Avg Age", value: `${avgAge || 10} ${pt ? "m" : "mo"}`, icon: Egg, color: "text-violet-500" },
         ].map(s => (
           <Card key={s.label} className="shadow-card border-border/50">
